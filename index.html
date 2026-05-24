@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vértech TdF | AgroTech + Data Centers desde el extremo sur</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #f8f9fa;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3.5em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        .hero h1 span { color: #e94560; }
+        .hero .tagline {
+            font-size: 1.4em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9em;
+            margin: 5px;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* PROBLEMA */
+        .problema {
+            background: white;
+            padding: 60px 0;
+        }
+        .section-title {
+            font-size: 2em;
+            color: #0f3460;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid #e94560;
+        }
+        .card h3 { color: #0f3460; margin-bottom: 10px; font-size: 1.2em; }
+        .card p { color: #555; font-size: 0.95em; }
+        
+        /* SOLUCION */
+        .solucion {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 60px 0;
+        }
+        .ventajas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .ventaja {
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .ventaja .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        .ventaja h3 { color: #0f3460; margin-bottom: 10px; }
+        .ventaja p { color: #666; font-size: 0.95em; }
+        
+        /* METRICAS */
+        .metricas {
+            background: #0f3460;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .metricas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .metrica h3 {
+            font-size: 2.5em;
+            color: #e94560;
+            margin-bottom: 5px;
+        }
+        .metrica p { opacity: 0.9; font-size: 0.95em; }
+        
+        /* MODELO */
+        .modelo {
+            background: white;
+            padding: 60px 0;
+        }
+        .tabla-ingresos {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .tabla-ingresos th {
+            background: #0f3460;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .tabla-ingresos td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .tabla-ingresos tr:last-child td {
+            background: #e8f6f3;
+            font-weight: bold;
+            color: #0f3460;
+        }
+        
+        /* ECOSISTEMA */
+        .ecosistema {
+            background: #f8f9fa;
+            padding: 60px 0;
+        }
+        .helice {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .actor {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            width: 280px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        .actor .icon { font-size: 2.5em; margin-bottom: 15px; }
+        .actor h3 { color: #0f3460; margin-bottom: 10px; }
+        .actor p { color: #666; font-size: 0.9em; }
+        
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, #e94560 0%, #c73e54 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .cta h2 { font-size: 2.2em; margin-bottom: 15px; }
+        .cta p { font-size: 1.1em; opacity: 0.95; margin-bottom: 30px; }
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #e94560;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: transform 0.2s;
+        }
+        .btn:hover { transform: translateY(-2px); }
+        
+        /* FOOTER */
+        .footer {
+            background: #16213e;
+            color: rgba(255,255,255,0.7);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        .footer a { color: #e94560; text-decoration: none; }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2em; }
+            .hero .tagline { font-size: 1.1em; }
+            .section-title { font-size: 1.6em; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>VÉRTECH <span>TdF</span></h1>
+            <p class="tagline">Robótica agrícola + Data Centers sustentables desde el extremo sur</p>
+            <div>
+                <span class="badge">🚀 Proyecto validado</span>
+                <span class="badge">🌱 AgroTech</span>
+                <span class="badge">❄️ Deep Tech</span>
+                <span class="badge">🇦🇷 Tierra del Fuego</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEMA -->
+    <section class="problema">
+        <div class="container">
+            <h2 class="section-title">🎯 El Problema</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>📱 Dependencia tecnológica</h3>
+                    <p>El 80% de los drones agrícolas en Argentina son importados de China (DJI/XAG). Fragilidad extrema ante devaluaciones y disrupciones de supply chain global.</p>
+                </div>
+                <div class="card">
+                    <h3>⚖️ Riesgo regulatorio</h3>
+                    <p>La industria electrónica fueguina depende de la Ley 19.640. Cualquier cambio fiscal pone en riesgo miles de puestos de trabajo calificado.</p>
+                </div>
+                <div class="card">
+                    <h3>🔥 Ineficiencia energética</h3>
+                    <p>Los centros de datos argentinos gastan hasta el 50% de su energía en refrigeración mecánica, con costos operativos insostenibles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUCION -->
+    <section class="solucion">
+        <div class="container">
+            <h2 class="section-title">💡 Nuestra Propuesta</h2>
+            <p style="text-align:center; max-width:700px; margin:0 auto 20px; color:#555;">
+                Vértech TdF es un proyecto de emprendimiento tecnológico que propone fabricar drones de precisión agrícola de diseño propio y operar centros de datos de ultra-eficiencia, aprovechando ventajas competitivas únicas de Tierra del Fuego.
+            </p>
+            <div class="ventajas">
+                <div class="ventaja">
+                    <div class="icon">🏭</div>
+                    <h3>Infraestructura SMT</h3>
+                    <p>Líneas de ensamblaje de alta precisión ya operativas en la provincia. Reconversión técnica en 6-9 meses sin inversión en maquinaria nueva.</p>
+                </div>
+                <div class="ventaja">
+                    <div class="icon">❄️</div>
+                    <h3>Clima Frío Natural</h3>
+                    <p>6,2°C de media anual permiten free cooling el 85% del año. PUE de 1,1-1,2 vs 1,5-1,8 convencional. Ahorro acumulado: USD 530.000 en 10 años.</p>
+                </div>
+                <div class="ventaja">
+                    <div class="icon">🎓</div>
+                    <h3>Capital Humano UTN</h3>
+                    <p>Ingenieros formados localmente. I+D conjunto con la UTN Facultad Regional Tierra del Fuego y co-titularidad de propiedad intelectual.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METRICAS -->
+    <section class="metricas">
+        <div class="container">
+            <h2 class="section-title" style="color:white;">📈 Proyección Financiera</h2>
+            <p style="opacity:0.8;">Escenario más exigente: tributación plena sin beneficios de la Ley 19.640</p>
+            <div class="metricas-grid">
+                <div class="metrica">
+                    <h3>USD 3.5M</h3>
+                    <p>Inversión inicial</p>
+                </div>
+                <div class="metrica">
+                    <h3>USD +680K</h3>
+                    <p>VAN (10 años)</p>
+                </div>
+                <div class="metrica">
+                    <h3>18%</h3>
+                    <p>TIR</p>
+                </div>
+                <div class="metrica">
+                    <h3>5.2 años</h3>
+                    <p>Período de recupero</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODELO -->
+    <section class="modelo">
+        <div class="container">
+            <h2 class="section-title">📊 Modelo de Negocio (B2B)</h2>
+            <table class="tabla-ingresos">
+                <tr>
+                    <th>Línea de Ingreso</th>
+                    <th>Descripción</th>
+                    <th>Proyección Año 3</th>
+                </tr>
+                <tr>
+                    <td>🚁 Hardware</td>
+                    <td>Drones agrícolas de manufactura nacional certificados (USD 18K-22K/unit)</td>
+                    <td>USD 1.130.000</td>
+                </tr>
+                <tr>
+                    <td>💻 SaaS</td>
+                    <td>Plataforma de análisis de imágenes y diagnóstico agronómico (USD 350-600/mes)</td>
+                    <td>USD 420.000</td>
+                </tr>
+                <tr>
+                    <td>🖥️ Data Center</td>
+                    <td>Colocation cloud soberana de alta eficiencia (USD 800-1.200/mes/rack)</td>
+                    <td>USD 200.000</td>
+                </tr>
+                <tr>
+                    <td colspan="2">TOTAL PROYECTADO AÑO 3</td>
+                    <td>USD 1.750.000</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- ECOSISTEMA -->
+    <section class="ecosistema">
+        <div class="container">
+            <h2 class="section-title">🤝 Ecosistema de Innovación</h2>
+            <p style="text-align:center; color:#666; margin-bottom:20px;">Modelo Triple Hélice: Universidad + Industria + Estado</p>
+            <div class="helice">
+                <div class="actor">
+                    <div class="icon">🎓</div>
+                    <h3>UTN TdF</h3>
+                    <p>I+D conjunto en firmware y algoritmos. Formación de recursos humanos especializados. Co-titularidad de patentes.</p>
+                </div>
+                <div class="actor">
+                    <div class="icon">🌾</div>
+                    <h3>INTA / AAPRESID</h3>
+                    <p>Validación agronómica de tecnologías. Canal comercial hacia productores y cooperativas agropecuarias.</p>
+                </div>
+                <div class="actor">
+                    <div class="icon">🏛️</div>
+                    <h3>Min. Ciencia (FONTAR)</h3>
+                    <p>Financiamiento de proyectos de innovación conjuntos. Reducción de 30-40% en costos de I+D para la empresa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>¿Querés conocer más?</h2>
+            <p>Estamos buscando inversión semilla para desarrollar el prototipo y poner en marcha la primera fase del proyecto.</p>
+            <a href="mailto:smclement27@gmail.com" class="btn">📧 Contactar al fundador</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p><strong>Sebastián M. Clement</strong> — Autor del Proyecto Vértech TdF</p>
+            <p>📧 smclement27@gmail.com | 📍 Río Grande, Tierra del Fuego, Argentina</p>
+            <p style="margin-top:15px; font-size:0.85em;">
+                Proyecto desarrollado en el marco de la Licenciatura en Administración de Empresas — UTN-FRBA (2026)<br>
+                Tesina: "Diseño de modelo de negocio para la fabricación de sistemas robóticos de monitoreo agrícola y centros de datos de alta eficiencia en Tierra del Fuego"
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
