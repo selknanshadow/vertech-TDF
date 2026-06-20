@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ── DESIGN SYSTEM VERTECH ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -42,20 +41,21 @@ h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 
 .section-sub { color: var(--text-secondary); font-size: 0.95rem; max-width: 700px; margin-bottom: 2.5rem; }
 section { padding: 4.5rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
 
-/* ── HEADER INTELIGENTE ── */
+/* ── HEADER ── */
 header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 1rem 2rem; background: rgba(8, 12, 20, 0.85); backdrop-filter: blur(12px);
+  padding: 0.75rem 2rem; background: rgba(8, 12, 20, 0.85); backdrop-filter: blur(12px);
   border-bottom: var(--border-glow);
 }
 .logo { display: flex; align-items: center; gap: 0.75rem; }
-.logo img { height: 48px; width: auto; object-fit: contain; display: block; }
-.logo-fallback { font-weight: 700; font-size: 1.3rem; display: none; }
+/* LOGO MÁS GRANDE */
+.logo img { height: 64px; width: auto; object-fit: contain; display: block; }
+.logo-fallback { font-weight: 700; font-size: 1.6rem; display: none; }
 nav a { color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; text-decoration: none; margin-left: 1.5rem; transition: var(--transition); }
 nav a:hover { color: var(--accent-cyan); }
 
-/* ── HERO PROFESIONAL ── */
+/* ── HERO ── */
 .hero {
   min-height: 85vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
   padding: 8rem 0 4rem; text-align: center;
@@ -64,14 +64,14 @@ nav a:hover { color: var(--accent-cyan); }
 .hero-tag {
   display: inline-flex; align-items: center; gap: 0.75rem;
   background: rgba(0, 245, 212, 0.05); border: 1px solid rgba(0, 245, 212, 0.18);
-  padding: 0.5rem 1.2rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1.5rem;
+  padding: 0.6rem 1.4rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem;
 }
-.hero-tag img { height: 22px; width: auto; border-radius: 2px; object-fit: contain; display: block; }
+/* BANDERA MÁS GRANDE */
+.hero-tag img { height: 32px; width: auto; border-radius: 2px; object-fit: contain; display: block; }
 h1 { font-size: 3.2rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; max-width: 950px; margin-bottom: 1rem; }
 h1 em { font-style: normal; background: linear-gradient(135deg, #fff 40%, var(--accent-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .hero-sub { color: var(--text-secondary); font-size: 1.1rem; max-width: 750px; margin-bottom: 2rem; }
 
-/* BOTONES */
 .cta-row { display: flex; gap: 1rem; justify-content: center; margin-bottom: 3.5rem; }
 .btn { display: inline-flex; align-items: center; padding: 0.75rem 1.75rem; border-radius: var(--radius); font-size: 0.88rem; font-weight: 600; text-decoration: none; transition: var(--transition); cursor: pointer; }
 .btn-primary { background: var(--text-primary); color: var(--bg-main); }
@@ -79,7 +79,6 @@ h1 em { font-style: normal; background: linear-gradient(135deg, #fff 40%, var(--
 .btn-ghost { background: rgba(255, 255, 255, 0.03); color: var(--text-primary); border: var(--border-glow); }
 .btn-ghost:hover { background: rgba(255, 255, 255, 0.07); border-color: rgba(255,255,255,0.15); }
 
-/* GRIDS INFORMATIVOS */
 .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; width: 100%; max-width: 1000px; }
 .kpi-card { background: var(--bg-surface); border: var(--border-glow); border-radius: var(--radius); padding: 1.25rem; text-align: left; }
 .kpi-val { font-size: 1.8rem; font-weight: 700; color: var(--accent-amber); display: block; }
@@ -89,19 +88,16 @@ h1 em { font-style: normal; background: linear-gradient(135deg, #fff 40%, var(--
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 .card { background: var(--bg-surface); border: var(--border-glow); border-radius: var(--radius); padding: 1.5rem; }
 
-/* ── SECCIÓN IMÁGENES DRONES INTEGRADOS ── */
 .drone-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
 .drone-card { background: var(--bg-surface); border: var(--border-glow); border-radius: var(--radius); overflow: hidden; }
 .drone-card img { width: 100%; height: 240px; object-fit: cover; display: block; transition: var(--transition); }
 .drone-card img:hover { transform: scale(1.02); }
 .drone-info { padding: 1rem 1.25rem; font-size: 0.85rem; color: var(--text-secondary); border-top: var(--border-glow); background: rgba(0,0,0,0.1); }
 
-/* ── SECCIÓN GRÁFICOS ANALÍTICOS (CSS PURO) ── */
 .chart-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem; }
 .chart-box { background: var(--bg-surface); border: var(--border-glow); border-radius: var(--radius); padding: 1.75rem; }
 .chart-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--text-primary); border-left: 3px solid var(--accent-cyan); padding-left: 0.5rem; }
 
-/* Gráfico de Anillo */
 .donut-chart-box { display: flex; align-items: center; gap: 2rem; justify-content: center; }
 .donut-chart {
   width: 140px; height: 140px; border-radius: 50%;
@@ -116,15 +112,13 @@ h1 em { font-style: normal; background: linear-gradient(135deg, #fff 40%, var(--
 .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-secondary); }
 .legend-color { width: 10px; height: 10px; border-radius: 2px; }
 
-/* Gráfico de Barras */
 .bar-chart { display: flex; flex-direction: column; gap: 1rem; margin-top: 0.5rem; }
 .bar-row { display: flex; align-items: center; gap: 1rem; }
 .bar-lbl { width: 60px; font-size: 0.8rem; color: var(--text-secondary); }
-.bar-track { flex: 1; height: 12px; background: rgba(255,255,255,0.03); border-radius: 2px; overflow: hidden; position: relative; }
+.bar-track { flex: 1; height: 12px; background: rgba(255,255,255,0.03); border-radius: 2px; overflow: hidden; }
 .bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan)); border-radius: 2px; }
 .bar-val { width: 45px; font-size: 0.8rem; font-weight: 600; text-align: right; color: var(--text-primary); }
 
-/* TABLAS INDUSTRIALES */
 .table-wrap { overflow-x: auto; margin-top: 1.5rem; border: var(--border-glow); border-radius: var(--radius); background: var(--bg-surface); }
 table { width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left; }
 thead th { background: rgba(255, 255, 255, 0.015); color: var(--text-primary); padding: 0.85rem 1rem; font-weight: 600; font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase; border-bottom: var(--border-glow); }
@@ -132,12 +126,20 @@ tbody tr { border-bottom: 1px solid rgba(255, 255, 255, 0.02); }
 tbody td { padding: 0.85rem 1rem; color: var(--text-secondary); }
 .ckd-note { margin-top: 1rem; padding: 0.75rem 1rem; background: rgba(59, 130, 246, 0.04); border-left: 3px solid var(--accent-blue); border-radius: 4px; font-size: 0.82rem; }
 
-/* LISTAS SIMPLES */
 ul { list-style: none; }
 li { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0.4rem; position: relative; padding-left: 1rem; }
 li::before { content: "•"; position: absolute; left: 0; color: var(--accent-cyan); }
 
-/* DOUBLE CTA SECCIÓN */
+/* ── SECCIÓN DRON ── */
+.drone-frame-section { padding: 4.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+.drone-frame-section iframe {
+  width: 100%;
+  height: 500px;
+  border: var(--border-glow);
+  border-radius: var(--radius);
+  display: block;
+}
+
 .cta-section { text-align: center; padding: 6rem 0; background: radial-gradient(circle at 50% 50%, rgba(0, 245, 212, 0.02), transparent 55%); }
 .cta-section h2 { font-size: 2.2rem; margin-bottom: 0.5rem; }
 .cta-box-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 800px; margin: 2.5rem auto 0; }
@@ -148,10 +150,52 @@ li::before { content: "•"; position: absolute; left: 0; color: var(--accent-cy
 footer { background: #05070A; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--text-muted); border-top: var(--border-glow); }
 footer a { color: var(--text-secondary); text-decoration: none; }
 
+/* CIERRE TESINA */
+.footer-tesina {
+  background: #05070A;
+  border-top: 1px solid rgba(0, 245, 212, 0.1);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+.footer-tesina img {
+  height: 56px;
+  width: auto;
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.9;
+}
+.footer-tesina .tesina-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  margin-bottom: 0.4rem;
+}
+.footer-tesina .tesina-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+.footer-tesina .tesina-autor {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+.footer-tesina .tesina-divider {
+  width: 40px;
+  height: 1px;
+  background: rgba(0, 245, 212, 0.3);
+  margin: 1rem auto;
+}
+
 @media(max-width: 960px) {
   .kpi-grid, .grid-3, .grid-2, .chart-container, .cta-box-row, .drone-gallery { grid-template-columns: 1fr; }
   nav { display: none; }
   h1 { font-size: 2.3rem; }
+  .drone-frame-section iframe { height: 380px; }
 }
 </style>
 </head>
@@ -168,6 +212,7 @@ footer a { color: var(--text-secondary); text-decoration: none; }
     <a href="#infraestructura">Infraestructura y Datos</a>
     <a href="#ckd">Estrategia CKD</a>
     <a href="#financiero">Finanzas</a>
+    <a href="#drone-demo">Demo Dron</a>
     <a href="#ecosistema">Ecosistema</a>
   </nav>
 </header>
@@ -180,12 +225,10 @@ footer a { color: var(--text-secondary); text-decoration: none; }
     </div>
     <h1>Modelo de Negocio Integrado: <em>AgroTech & Cloud Computing</em></h1>
     <p class="hero-sub">Validación e implementación de infraestructura en la nube de alta eficiencia y automatización de procesos agroindustriales operando bajo el Área Aduanera Especial de Río Grande.</p>
-    
     <div class="cta-row">
       <a href="#modelo" class="btn btn-primary">Ver Modelo de Negocio</a>
       <a href="#infraestructura" class="btn btn-ghost">Infraestructura y Gráficos</a>
     </div>
-
     <div class="kpi-grid">
       <div class="kpi-card"><span class="kpi-val">Ley 19.640</span><span class="kpi-lbl">Promoción Territorial</span></div>
       <div class="kpi-card"><span class="kpi-val">-45%</span><span class="kpi-lbl">Eficiencia Térmica</span></div>
@@ -200,7 +243,6 @@ footer a { color: var(--text-secondary); text-decoration: none; }
     <span class="section-tag">Oportunidad de Mercado</span>
     <h2>Variables Críticas del Territorio</h2>
     <p class="section-sub">Brechas operacionales del ecosistema actual que justifican la viabilidad y despliegue del modelo Vertech TdF.</p>
-    
     <div class="grid-3">
       <div class="card">
         <h3>Aislamiento Analítico</h3>
@@ -223,7 +265,6 @@ footer a { color: var(--text-secondary); text-decoration: none; }
     <span class="section-tag">Estrategia Comercial</span>
     <h2>Pilares del Modelo Corporativo</h2>
     <p class="section-sub">Convergencia de dos verticales operativas de alto rendimiento aprovechando el Régimen de Promoción Industrial.</p>
-    
     <div class="grid-2">
       <div class="card">
         <h3 style="color:var(--accent-cyan); margin-bottom:0.5rem;">1. Infraestructura Cloud de Cero Emisiones</h3>
@@ -242,7 +283,6 @@ footer a { color: var(--text-secondary); text-decoration: none; }
     <span class="section-tag">Operaciones de Campo</span>
     <h2>Infraestructura y Monitoreo Analítico</h2>
     <p class="section-sub">Integración de captura remota de datos e indicadores de escalabilidad de procesamiento distribuidos.</p>
-    
     <div class="drone-gallery">
       <div class="drone-card">
         <img src="imagen1.png" alt="Drones Vertech en monitoreo agrícola" onerror="this.style.background='var(--bg-surface-hover)';">
@@ -253,7 +293,6 @@ footer a { color: var(--text-secondary); text-decoration: none; }
         <div class="drone-info"><strong>Imagen 2:</strong> Telemetría y transmisión en tiempo real de índices de biomasa hacia el nodo central Cloud.</div>
       </div>
     </div>
-
     <div class="chart-container">
       <div class="chart-box">
         <div class="chart-title">Distribución del Presupuesto Inicial (CAPEX)</div>
@@ -265,45 +304,19 @@ footer a { color: var(--text-secondary); text-decoration: none; }
             </div>
           </div>
           <div class="donut-legend">
-            <div class="legend-item">
-              <div class="legend-color" style="background:var(--accent-blue);"></div>
-              <span>45% Equipamiento Nodos</span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-color" style="background:var(--accent-cyan);"></div>
-              <span>30% Infraestructura Civil</span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-color" style="background:var(--accent-amber);"></div>
-              <span>25% I+D e Integración</span>
-            </div>
+            <div class="legend-item"><div class="legend-color" style="background:var(--accent-blue);"></div><span>45% Equipamiento Nodos</span></div>
+            <div class="legend-item"><div class="legend-color" style="background:var(--accent-cyan);"></div><span>30% Infraestructura Civil</span></div>
+            <div class="legend-item"><div class="legend-color" style="background:var(--accent-amber);"></div><span>25% I+D e Integración</span></div>
           </div>
         </div>
       </div>
-      
       <div class="chart-box">
         <div class="chart-title">Proyección de Almacenamiento Activo (Petabytes)</div>
         <div class="bar-chart">
-          <div class="bar-row">
-            <div class="bar-lbl">Año 1</div>
-            <div class="bar-track"><div class="bar-fill" style="width: 25%;"></div></div>
-            <div class="bar-val">1.2 PB</div>
-          </div>
-          <div class="bar-row">
-            <div class="bar-lbl">Año 2</div>
-            <div class="bar-track"><div class="bar-fill" style="width: 55%;"></div></div>
-            <div class="bar-val">3.5 PB</div>
-          </div>
-          <div class="bar-row">
-            <div class="bar-lbl">Año 3</div>
-            <div class="bar-track"><div class="bar-fill" style="width: 85%;"></div></div>
-            <div class="bar-val">6.8 PB</div>
-          </div>
-          <div class="bar-row">
-            <div class="bar-lbl">Año 4</div>
-            <div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div>
-            <div class="bar-val">9.5 PB</div>
-          </div>
+          <div class="bar-row"><div class="bar-lbl">Año 1</div><div class="bar-track"><div class="bar-fill" style="width: 25%;"></div></div><div class="bar-val">1.2 PB</div></div>
+          <div class="bar-row"><div class="bar-lbl">Año 2</div><div class="bar-track"><div class="bar-fill" style="width: 55%;"></div></div><div class="bar-val">3.5 PB</div></div>
+          <div class="bar-row"><div class="bar-lbl">Año 3</div><div class="bar-track"><div class="bar-fill" style="width: 85%;"></div></div><div class="bar-val">6.8 PB</div></div>
+          <div class="bar-row"><div class="bar-lbl">Año 4</div><div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div><div class="bar-val">9.5 PB</div></div>
         </div>
       </div>
     </div>
@@ -315,32 +328,15 @@ footer a { color: var(--text-secondary); text-decoration: none; }
     <span class="section-tag">Logística Industrial</span>
     <h2>Estrategia de Manufactura e Integración CKD</h2>
     <p class="section-sub">Esquema secuencial de estaciones de control internas y aseguramiento de la trazabilidad del hardware de red.</p>
-    
     <div class="table-wrap">
       <table>
         <thead>
-          <tr>
-            <th>Estación</th>
-            <th>Proceso Crítico Interno</th>
-            <th>Métrica de Aceptación</th>
-          </tr>
+          <tr><th>Estación</th><th>Proceso Crítico Interno</th><th>Métrica de Aceptación</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Estación 4</td>
-            <td>Pruebas de Seguridad Eléctrica (Hi-pot)</td>
-            <td>Fuga de corriente &lt; 5mA (Parámetro Crítico)</td>
-          </tr>
-          <tr>
-            <td>Estación 7</td>
-            <td>Etiquetado de Unidad y Trazabilidad de Números de Serie</td>
-            <td>Alineación de Registro 100% Digitalizada</td>
-          </tr>
-          <tr>
-            <td>Estación 10</td>
-            <td>Desembalaje de Kits CKD y Verificación de Silicio</td>
-            <td>Control de componentes vs Bill of Materials (BOM)</td>
-          </tr>
+          <tr><td>Estación 4</td><td>Pruebas de Seguridad Eléctrica (Hi-pot)</td><td>Fuga de corriente &lt; 5mA (Parámetro Crítico)</td></tr>
+          <tr><td>Estación 7</td><td>Etiquetado de Unidad y Trazabilidad de Números de Serie</td><td>Alineación de Registro 100% Digitalizada</td></tr>
+          <tr><td>Estación 10</td><td>Desembalaje de Kits CKD y Verificación de Silicio</td><td>Control de componentes vs Bill of Materials (BOM)</td></tr>
         </tbody>
       </table>
     </div>
@@ -355,7 +351,6 @@ footer a { color: var(--text-secondary); text-decoration: none; }
     <span class="section-tag">Evaluación Corporativa</span>
     <h2>Viabilidad Macroeconómica</h2>
     <p class="section-sub">Indicadores de rentabilidad proyectados para el consolidado operacional bajo los beneficios impositivos de la AAE.</p>
-    
     <div class="grid-3" style="grid-template-columns: repeat(4, 1fr);">
       <div class="card"><span class="kpi-val" style="color:var(--accent-blue);">24%</span><span class="kpi-lbl">Tasa Interna de Retorno (TIR)</span></div>
       <div class="card"><span class="kpi-val" style="color:var(--accent-cyan);">2.8M</span><span class="kpi-lbl">Valor Actual Neto (VAN USD)</span></div>
@@ -365,17 +360,32 @@ footer a { color: var(--text-secondary); text-decoration: none; }
   </div>
 </section>
 
+<!-- ── SECCIÓN DRON INTEGRADA ── -->
+<section id="drone-demo" class="drone-frame-section">
+  <div class="container">
+    <span class="section-tag">Tecnología en Vuelo</span>
+    <h2>Operación de Campo</h2>
+    <p class="section-sub">Simulación de dron agrícola en misión de monitoreo sobre cultivos con telemetría en tiempo real.</p>
+    <iframe
+      src="drone.html"
+      width="100%"
+      height="500px"
+      style="border: var(--border-glow); border-radius: var(--radius); display: block;"
+      scrolling="no"
+      title="Simulación dron agrícola Vertech TdF">
+    </iframe>
+  </div>
+</section>
+
 <section id="ecosistema">
   <div class="container">
     <span class="section-tag">Sinergia Territorial</span>
     <h2>Ecosistema de Cooperación Productiva</h2>
     <p class="section-sub">Articulación con las capacidades industriales existentes de la provincia para asegurar continuidad de negocio.</p>
-    
     <div class="card" style="background: rgba(59, 130, 246, 0.02); border-color: rgba(59,130,246,0.15); margin-bottom: 1.5rem;">
       <h3 style="margin-bottom: 0.5rem;">Sinergia y Transferencia de Conocimiento Tecnológico</h3>
       <p>Alineación estratégica con los estándares de la industria manufacturera electrónica de Tierra del Fuego. Esta integración directa habilita la adopción rápida de flujos logísticos optimizados, metodologías Just-In-Time y rutinas estrictas de control de fallas a escala global.</p>
     </div>
-    
     <div class="grid-3">
       <div class="card">
         <h3>Sector Público</h3>
@@ -406,14 +416,12 @@ footer a { color: var(--text-secondary); text-decoration: none; }
   <div class="container">
     <h2>Canales de Vinculación y Negocios</h2>
     <p class="section-sub" style="margin: 0 auto 2rem; text-align: center;">Seleccioná el canal correspondiente según la naturaleza de la consulta corporativa o comercial.</p>
-    
     <div class="cta-box-row">
       <div class="cta-box">
         <h3 style="color: var(--accent-cyan);">Estrategia e Inversión</h3>
         <p>Contacto directo para alianzas comerciales de gran escala, expansión del modelo, rondas de inversión corporativas o vinculación institucional.</p>
         <a href="mailto:fundador@vertechtdf.com" class="btn btn-primary" style="background: var(--accent-cyan); color: #000;">Contactar Fundador</a>
       </div>
-      
       <div class="cta-box">
         <h3 style="color: var(--accent-blue);">Desarrollo e Ingeniería</h3>
         <p>Consultas técnicas dedicadas a la arquitectura de centros de datos modulares, optimización analítica o especificaciones del flujo CKD.</p>
@@ -425,10 +433,16 @@ footer a { color: var(--text-secondary); text-decoration: none; }
 
 <footer>
   <div>&copy; 2026 Vertech TdF. Desarrollado bajo el marco de la Ley 19.640 | Río Grande, Tierra del Fuego, Argentina.</div>
-  <div style="color: var(--text-muted); font-size: 0.72rem; max-width: 450px; text-align: right;">
-    Este desarrollo de modelo de negocio integrado constituye la defensa y formulación de la Tesina de Grado para la carrera de Licenciatura en Administración de Empresas (LAE).
-  </div>
+  <a href="#">selknanshadow.github.io/vertech-TDF</a>
 </footer>
+
+<div class="footer-tesina">
+  <img src="bandera.png" alt="Bandera Tierra del Fuego" onerror="this.style.display='none'">
+  <div class="tesina-divider"></div>
+  <div class="tesina-label">Proyecto Tesina</div>
+  <div class="tesina-title">Licenciatura en Administración · UTN BA</div>
+  <div class="tesina-autor">Sebastián Clement</div>
+</div>
 
 </body>
 </html>
