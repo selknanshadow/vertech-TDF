@@ -41,7 +41,7 @@ header {
   border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 .logo { display: flex; align-items: center; gap: 0.75rem; }
-.logo img { height: 72px; width: auto; object-fit: contain; filter: drop-shadow(0 0 12px rgba(0,245,212,0.3)); }
+.logo img { height: 96px; width: auto; object-fit: contain; filter: drop-shadow(0 0 16px rgba(0,245,212,0.35)); }
 .logo-fallback { font-weight: 800; font-size: 1.6rem; display: none; letter-spacing: -0.02em; }
 .logo-fallback span { color: var(--accent-cyan); }
 nav { display: flex; align-items: center; gap: 0.25rem; }
@@ -565,7 +565,7 @@ footer a { color: var(--text-secondary); text-decoration: none; }
           style="width:100%;height:180px;object-fit:cover;display:block;"
           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
         <div style="display:none;width:100%;height:180px;background:linear-gradient(135deg,#0a1a2a,#1a0a2a);align-items:center;justify-content:center;font-size:2.5rem;opacity:0.3;">📡</div>
-        <div class="drone-info"><strong>Data Monetization:</strong> Telemetría en tiempo real al nodo central Cloud.</div>
+        <div class="drone-info"><strong>Control desde tu mano:</strong> Visualizá datos del dron en tiempo real desde la app móvil.</div>
       </div>
 
       <div class="drone-card">
@@ -683,21 +683,7 @@ footer a { color: var(--text-secondary); text-decoration: none; }
       </div>
     </div>
 
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>Estación</th><th>Proceso Crítico</th><th>Métrica de Aceptación</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Estación 4</td><td>Pruebas de Seguridad Eléctrica (Hi-pot)</td><td>Fuga de corriente &lt; 5mA</td></tr>
-          <tr><td>Estación 7</td><td>Etiquetado y Trazabilidad de Serie</td><td>Registro 100% digitalizado</td></tr>
-          <tr><td>Estación 10</td><td>Desembalaje CKD y Verificación de Silicio</td><td>Control vs BOM</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="ckd-note">
-      <strong>Cumplimiento ARCA:</strong> Los equipos procesados quedan exceptuados del uso obligatorio de etiqueta fiscal física bajo las directrices vigentes.
-    </div>
+
   </div>
 </section>
 
