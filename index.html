@@ -3,581 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vertech TdF | AgroTech + Data Centers desde el extremo sur</title>
+<title>Vertech TdF | Modelo de Negocio - AgroTech & Cloud Computing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ── RESET & DESIGN TOKENS ── */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ── DESIGN SYSTEM VERTECH ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* Paleta Oscura Premium */
-  --bg-main: #0B0F17;       /* Fondo ultra oscuro */
-  --bg-surface: #141B27;    /* Superficie de tarjetas */
-  --bg-surface-hover: #1D2635;
-  
-  /* Colores de Acento Estrictos */
-  --accent-cyan: #00F5D4;   /* Teclas e hipervínculos de alta iluminación */
-  --accent-blue: #3B82F6;   /* Identidad tecnológica */
-  --accent-amber: #F59E0B;  /* KPIs y alertas estables */
-  --accent-green: #10B981;  /* Éxito / Validación */
-  
-  /* Escala de Grises para Textos */
-  --text-primary: #F3F4F6;  /* Blanco suave (no cansa la vista) */
-  --text-secondary: #9CA3AF;/* Gris intermedio para descripciones */
-  --text-muted: #6B7280;    /* Gris oscuro para deshabilitados o notas */
-  
-  /* Tipografía y Estructura */
+  --bg-main: #080C14;
+  --bg-surface: #111823;
+  --bg-surface-hover: #16202F;
+  --accent-cyan: #00F5D4;
+  --accent-blue: #3B82F6;
+  --accent-amber: #F59E0B;
+  --accent-green: #10B981;
+  --text-primary: #F3F4F6;
+  --text-secondary: #9CA3AF;
+  --text-muted: #4B5563;
   --sans: 'Plus Jakarta Sans', sans-serif;
-  --radius-lg: 12px;
-  --radius-sm: 6px;
-  --transition: all 0.25s cubic-bezier(.4, 0, .2, 1);
+  --radius: 8px;
   --border-glow: 1px solid rgba(255, 255, 255, 0.05);
+  --transition: all 0.2s ease-in-out;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
+html { scroll-behavior: smooth; }
 body {
   font-family: var(--sans);
   background-color: var(--bg-main);
   color: var(--text-primary);
-  overflow-x: hidden;
-  line-height: 1.6;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── COMPONENTES GENERALES REUTILIZABLES ── */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+.section-tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 0.5rem; display: block; }
+h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+.section-sub { color: var(--text-secondary); font-size: 0.95rem; max-width: 700px; margin-bottom: 2.5rem; }
+section { padding: 4.5rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
 
-.section-tag {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--accent-cyan);
-  margin-bottom: 0.75rem;
-  display: block;
-}
-
-h2 {
-  font-size: clamp(2rem, 3.5vw, 2.5rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-.section-sub {
-  color: var(--text-secondary);
-  font-size: 1.05rem;
-  font-weight: 400;
-  max-width: 600px;
-  margin-bottom: 3.5rem;
-}
-
-section {
-  padding: 8rem 2.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-}
-
-/* ── HEADER DE NAVEGACIÓN ── */
+/* ── HEADER INTELIGENTE ── */
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.25rem 3rem;
-  background: rgba(11, 15, 23, 0.75);
-  backdrop-filter: blur(16px);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2rem; background: rgba(8, 12, 20, 0.85); backdrop-filter: blur(12px);
   border-bottom: var(--border-glow);
 }
+.logo { display: flex; align-items: center; gap: 0.75rem; }
+.logo img { height: 48px; width: auto; object-fit: contain; display: block; }
+.logo-fallback { font-weight: 700; font-size: 1.3rem; display: none; }
+nav a { color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; text-decoration: none; margin-left: 1.5rem; transition: var(--transition); }
+nav a:hover { color: var(--accent-cyan); }
 
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-nav a {
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-  font-weight: 500;
-  text-decoration: none;
-  margin-left: 2rem;
-  letter-spacing: 0.02em;
-  transition: var(--transition);
-}
-
-nav a:hover {
-  color: var(--text-primary);
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
-
-/* ── HERO SECTION ── */
+/* ── HERO PROFESIONAL ── */
 .hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10rem 2.5rem 6rem;
-  background: 
-    radial-gradient(circle at 50% -20%, rgba(59, 130, 246, 0.15), transparent 50%),
-    radial-gradient(circle at 10% 80%, rgba(0, 245, 212, 0.03), transparent 40%);
-  text-align: center;
-  position: relative;
+  min-height: 85vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 8rem 0 4rem; text-align: center;
+  background: radial-gradient(circle at 50% -10%, rgba(59, 130, 246, 0.18), transparent 60%);
 }
-
 .hero-tag {
-  display: inline-flex;
-  align-items: center;
-  background: rgba(0, 245, 212, 0.06);
-  border: 1px solid rgba(0, 245, 212, 0.2);
-  color: var(--accent-cyan);
-  padding: 0.4rem 1rem;
-  border-radius: 30px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  margin-bottom: 1.5rem;
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  background: rgba(0, 245, 212, 0.05); border: 1px solid rgba(0, 245, 212, 0.18);
+  padding: 0.5rem 1.2rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1.5rem;
 }
+.hero-tag img { height: 22px; width: auto; border-radius: 2px; object-fit: contain; display: block; }
+h1 { font-size: 3.2rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; max-width: 950px; margin-bottom: 1rem; }
+h1 em { font-style: normal; background: linear-gradient(135deg, #fff 40%, var(--accent-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-sub { color: var(--text-secondary); font-size: 1.1rem; max-width: 750px; margin-bottom: 2rem; }
 
-h1 {
-  font-size: clamp(2.8rem, 6vw, 4.5rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  max-width: 900px;
-  margin-bottom: 1.5rem;
+/* BOTONES */
+.cta-row { display: flex; gap: 1rem; justify-content: center; margin-bottom: 3.5rem; }
+.btn { display: inline-flex; align-items: center; padding: 0.75rem 1.75rem; border-radius: var(--radius); font-size: 0.88rem; font-weight: 600; text-decoration: none; transition: var(--transition); cursor: pointer; }
+.btn-primary { background: var(--text-primary); color: var(--bg-main); }
+.btn-primary:hover { background: #fff; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,255,255,0.1); }
+.btn-ghost { background: rgba(255, 255, 255, 0.03); color: var(--text-primary); border: var(--border-glow); }
+.btn-ghost:hover { background: rgba(255, 255, 255, 0.07); border-color: rgba(255,255,255,0.15); }
+
+/* GRIDS INFORMATIVOS */
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; width: 100%; max-width: 1000px; }
+.kpi-card { background: var(--bg-surface); border: var(--border-glow); border-radius: var(--radius); padding: 1.25rem; text-align: left; }
+.kpi-val { font-size: 1.8rem; font-weight: 700; color: var(--accent-amber); display: block; }
+.kpi-lbl { font-size: 0.78rem; color: var(--text-secondary); }
+
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.card { background: var(--bg-surface); border: var(--border-glow); border-radius: var(--radius); padding: 1.5rem; }
+
+/* ── SECCIÓN IMÁGENES DRONES INTEGRADOS ── */
+.drone-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+.drone-card { background: var(--bg-surface); border: var(--border-glow); border-radius: var(--radius); overflow: hidden; }
+.drone-card img { width: 100%; height: 240px; object-fit: cover; display: block; transition: var(--transition); }
+.drone-card img:hover { transform: scale(1.02); }
+.drone-info { padding: 1rem 1.25rem; font-size: 0.85rem; color: var(--text-secondary); border-top: var(--border-glow); background: rgba(0,0,0,0.1); }
+
+/* ── SECCIÓN GRÁFICOS ANALÍTICOS (CSS PURO) ── */
+.chart-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem; }
+.chart-box { background: var(--bg-surface); border: var(--border-glow); border-radius: var(--radius); padding: 1.75rem; }
+.chart-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--text-primary); border-left: 3px solid var(--accent-cyan); padding-left: 0.5rem; }
+
+/* Gráfico de Anillo */
+.donut-chart-box { display: flex; align-items: center; gap: 2rem; justify-content: center; }
+.donut-chart {
+  width: 140px; height: 140px; border-radius: 50%;
+  background: conic-gradient(var(--accent-blue) 0% 45%, var(--accent-cyan) 45% 75%, var(--accent-amber) 75% 100%);
+  position: relative; display: flex; align-items: center; justify-content: center;
 }
+.donut-chart::before { content: ""; position: absolute; width: 90px; height: 90px; background: var(--bg-surface); border-radius: 50%; }
+.donut-center-text { position: relative; z-index: 2; text-align: center; }
+.donut-center-text .main { font-size: 1.2rem; font-weight: 700; color: #fff; display: block; }
+.donut-center-text .sub { font-size: 0.65rem; color: var(--text-secondary); text-transform: uppercase; }
+.donut-legend { display: flex; flex-direction: column; gap: 0.5rem; }
+.legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-secondary); }
+.legend-color { width: 10px; height: 10px; border-radius: 2px; }
 
-h1 em {
-  font-style: normal;
-  background: linear-gradient(135deg, #fff 30%, var(--accent-blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+/* Gráfico de Barras */
+.bar-chart { display: flex; flex-direction: column; gap: 1rem; margin-top: 0.5rem; }
+.bar-row { display: flex; align-items: center; gap: 1rem; }
+.bar-lbl { width: 60px; font-size: 0.8rem; color: var(--text-secondary); }
+.bar-track { flex: 1; height: 12px; background: rgba(255,255,255,0.03); border-radius: 2px; overflow: hidden; position: relative; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan)); border-radius: 2px; }
+.bar-val { width: 45px; font-size: 0.8rem; font-weight: 600; text-align: right; color: var(--text-primary); }
 
-.hero-sub {
-  color: var(--text-secondary);
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin-bottom: 3rem;
-}
+/* TABLAS INDUSTRIALES */
+.table-wrap { overflow-x: auto; margin-top: 1.5rem; border: var(--border-glow); border-radius: var(--radius); background: var(--bg-surface); }
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left; }
+thead th { background: rgba(255, 255, 255, 0.015); color: var(--text-primary); padding: 0.85rem 1rem; font-weight: 600; font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase; border-bottom: var(--border-glow); }
+tbody tr { border-bottom: 1px solid rgba(255, 255, 255, 0.02); }
+tbody td { padding: 0.85rem 1rem; color: var(--text-secondary); }
+.ckd-note { margin-top: 1rem; padding: 0.75rem 1rem; background: rgba(59, 130, 246, 0.04); border-left: 3px solid var(--accent-blue); border-radius: 4px; font-size: 0.82rem; }
 
-/* BOTONES PREMIUM */
-.cta-row {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-bottom: 4rem;
-}
+/* LISTAS SIMPLES */
+ul { list-style: none; }
+li { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0.4rem; position: relative; padding-left: 1rem; }
+li::before { content: "•"; position: absolute; left: 0; color: var(--accent-cyan); }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.85rem 2rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition);
-  cursor: pointer;
-}
+/* DOUBLE CTA SECCIÓN */
+.cta-section { text-align: center; padding: 6rem 0; background: radial-gradient(circle at 50% 50%, rgba(0, 245, 212, 0.02), transparent 55%); }
+.cta-section h2 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+.cta-box-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 800px; margin: 2.5rem auto 0; }
+.cta-box { background: var(--bg-surface); border: var(--border-glow); padding: 2rem; border-radius: var(--radius); text-align: center; }
+.cta-box h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.cta-box p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem; min-height: 40px; }
 
-.btn-primary {
-  background: var(--text-primary);
-  color: var(--bg-main);
-}
-
-.btn-primary:hover {
-  background: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
-}
-
-.btn-ghost {
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--text-primary);
-  border: var(--border-glow);
-}
-
-.btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-/* GRIDS DE CONTENEDORES OSCUROS */
-.kpi-grid, .cards-3, .pilares, .sup-grid, .phases, .helice-grid, .brasil-grid {
-  display: grid;
-  gap: 1.5rem;
-}
-
-.kpi-grid { grid-template-columns: repeat(4, 1fr); width: 100%; max-width: 900px; }
-.cards-3 { grid-template-columns: repeat(3, 1fr); }
-.pilares { grid-template-columns: repeat(2, 1fr); }
-.sup-grid { grid-template-columns: repeat(3, 1fr); }
-.phases { grid-template-columns: repeat(4, 1fr); }
-.helice-grid { grid-template-columns: repeat(3, 1fr); }
-.brasil-grid { grid-template-columns: 1fr 1fr; gap: 4rem; }
-
-/* TARJETAS OSCURAS */
-.kpi-card, .prob-card, .pilar, .sup-card, .phase, .helice-card {
-  background-color: var(--bg-surface);
-  border: var(--border-glow);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  transition: var(--transition);
-  text-align: left;
-}
-
-.kpi-card:hover, .prob-card:hover, .pilar:hover, .sup-card:hover, .phase:hover, .helice-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.12);
-  background-color: var(--bg-surface-hover);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.kpi-val {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--accent-amber);
-  display: block;
-  margin-bottom: 0.25rem;
-}
-
-.kpi-lbl {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-}
-
-/* SECCIONES BASE */
-.problema, .brasil, .financiero, .ecosistema {
-  background-color: var(--bg-main);
-}
-
-.prob-card {
-  border-top: 2px solid rgba(255, 255, 255, 0.1);
-}
-.prob-card:nth-child(1) { border-top-color: var(--accent-blue); }
-.prob-card:nth-child(2) { border-top-color: var(--accent-amber); }
-.prob-card:nth-child(3) { border-top-color: var(--accent-green); }
-
-.prob-icon, .pilar-icon, .helice-icon {
-  font-size: 1.75rem;
-  margin-bottom: 1.25rem;
-  display: block;
-}
-
-h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  letter-spacing: -0.01em;
-}
-
-p {
-  color: var(--text-secondary);
-  font-size: 0.92rem;
-  line-height: 1.7;
-}
-
-/* PILARES Y PROVEEDORES */
-.pilar {
-  display: flex;
-  gap: 1.25rem;
-}
-
-.pilar-icon {
-  width: 44px;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.sup-badge {
-  padding: 0.5rem 1rem;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  border-bottom: var(--border-glow);
-}
-
-.badge-green { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); }
-.badge-teal { background: rgba(0, 245, 212, 0.1); color: var(--accent-cyan); }
-.badge-amber { background: rgba(245, 158, 11, 0.1); color: var(--accent-amber); }
-
-.sup-body ul, .phase-body ul, .helice-card ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  margin-top: 1rem;
-}
-
-.sup-body li, .phase-body li, .helice-card li {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  padding-left: 1.2rem;
-  position: relative;
-}
-
-.sup-body li::before { content: '→'; position: absolute; left: 0; color: var(--accent-cyan); }
-.phase-body li::before { content: '•'; position: absolute; left: 0; color: var(--accent-blue); font-size: 1.2rem; top: -2px; }
-.helice-card li::before { content: '✓'; position: absolute; left: 0; color: var(--accent-green); }
-
-/* TABLAS DISEÑO DARK/MINIMAL */
-.table-wrap {
-  overflow-x: auto;
-  margin-top: 2.5rem;
-  border: var(--border-glow);
-  border-radius: var(--radius-lg);
-  background: var(--bg-surface);
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-  text-align: left;
-}
-
-thead th {
-  background: rgba(255, 255, 255, 0.02);
-  color: var(--text-primary);
-  padding: 1rem 1.25rem;
-  font-weight: 600;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  border-bottom: var(--border-glow);
-}
-
-tbody tr {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-  transition: var(--transition);
-}
-
-tbody tr:hover {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-tbody td {
-  padding: 1rem 1.25rem;
-  color: var(--text-secondary);
-}
-
-tbody tr:last-child td {
-  border: none;
-}
-
-.ckd-note {
-  margin-top: 1.5rem;
-  padding: 1rem 1.25rem;
-  background: rgba(59, 130, 246, 0.05);
-  border-left: 3px solid var(--accent-blue);
-  border-radius: var(--radius-sm);
-  font-size: 0.88rem;
-  color: var(--text-primary);
-}
-
-/* SECCIÓN BRASIL STATS */
-.stat-row {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
-}
-
-.stat-box {
-  flex: 1;
-  background: var(--bg-surface);
-  border: var(--border-glow);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  text-align: center;
-}
-
-.stat-box .val {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--accent-cyan);
-}
-
-.stat-box .lbl {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  margin-top: 0.25rem;
-}
-
-.brasil-pts {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.brasil-pt {
-  padding-left: 1.25rem;
-  border-left: 2px solid var(--accent-green);
-}
-
-.brasil-pt h4 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-
-/* FINANCIERO KPI ROWS */
-.kpi-row {
-  display: flex;
-  gap: 1.25rem;
-  margin-bottom: 3.5rem;
-  flex-wrap: wrap;
-}
-
-.fin-kpi {
-  flex: 1;
-  min-width: 200px;
-  border-radius: var(--radius-lg);
-  padding: 1.75rem;
-  background: var(--bg-surface);
-  border: var(--border-glow);
-}
-
-.fin-kpi .fv {
-  font-size: 2rem;
-  font-weight: 700;
-  display: block;
-  margin-bottom: 0.25rem;
-}
-
-.fin-kpi.blue .fv { color: var(--accent-blue); }
-.fin-kpi.cyan .fv { color: var(--accent-cyan); }
-.fin-kpi.green .fv { color: var(--accent-green); }
-.fin-kpi.amber .fv { color: var(--accent-amber); }
-
-.fin-kpi .fl {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  font-weight: 500;
-}
-
-/* ROADMAP PLANIFICACIÓN */
-.phase-head {
-  background: rgba(255, 255, 255, 0.02);
-  padding: 0.85rem 1rem;
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-align: center;
-  border-bottom: var(--border-glow);
-  color: var(--accent-cyan);
-}
-
-.phase-body { padding: 1.5rem; }
-.phase-body h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
-
-.phase-budget {
-  margin-top: 1rem;
-  background: rgba(245, 158, 11, 0.08);
-  border: 1px solid rgba(245, 158, 11, 0.2);
-  color: var(--accent-amber);
-  border-radius: var(--radius-sm);
-  padding: 0.4rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-align: center;
-}
-
-/* ECOISTEMA MIRGOR BOX */
-.mirgor-box {
-  background: rgba(59, 130, 246, 0.03);
-  border: 1px solid rgba(59, 130, 246, 0.15);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  margin-bottom: 3.5rem;
-}
-
-.mirgor-box h3 { color: var(--text-primary); }
-
-.helice-card .sub {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  margin-bottom: 0.5rem;
-}
-
-/* ── CTA SECCIÓN FINAL ── */
-.cta-section {
-  background: radial-gradient(circle at 50% 50%, rgba(0, 245, 212, 0.04), transparent 60%), var(--bg-main);
-  text-align: center;
-  padding: 10rem 2.5rem;
-}
-
-.cta-section h2 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 1rem; }
-.cta-section p { color: var(--text-secondary); font-size: 1.1rem; max-width: 520px; margin: 0 auto 3rem; }
-
-.contact-info {
-  margin-top: 4rem;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  display: flex;
-  gap: 3rem;
-  justify-content: center;
-}
-
-.contact-info a { color: var(--text-secondary); text-decoration: none; transition: var(--transition); }
-.contact-info a:hover { color: var(--accent-cyan); }
-
-/* ── FOOTER TERMINAL ── */
-footer {
-  background: #07090E;
-  padding: 2rem 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  border-top: var(--border-glow);
-}
-
+footer { background: #05070A; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--text-muted); border-top: var(--border-glow); }
 footer a { color: var(--text-secondary); text-decoration: none; }
-footer a:hover { color: var(--text-primary); }
 
-/* ── ANIMACIÓN REVEAL SUTIL ── */
-.reveal { opacity: 0; transform: translateY(15px); transition: opacity 0.5s ease, transform 0.5s ease; }
-.reveal.visible { opacity: 1; transform: none; }
-
-/* ── RESPONSIVE ADAPTABILITY ── */
 @media(max-width: 960px) {
-  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-  .cards-3, .sup-grid, .helice-grid, .brasil-grid { grid-template-columns: 1fr; }
-  .pilares, .phases { grid-template-columns: repeat(2, 1fr); }
+  .kpi-grid, .grid-3, .grid-2, .chart-container, .cta-box-row, .drone-gallery { grid-template-columns: 1fr; }
   nav { display: none; }
-  header { padding: 1.25rem 2rem; }
-}
-
-@media(max-width: 600px) {
-  .kpi-grid, .pilares, .phases { grid-template-columns: 1fr; }
-  section { padding: 5rem 1.5rem; }
-  .hero { padding: 8rem 1.5rem 5rem; }
-  .stat-row { flex-direction: column; }
+  h1 { font-size: 2.3rem; }
 }
 </style>
 </head>
@@ -585,341 +159,243 @@ footer a:hover { color: var(--text-primary); }
 
 <header>
   <div class="logo">
-    <img src="logo.png" alt="Vertech TdF Logo" style="height: 32px; width: auto; display: block; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-    <span style="display: none; font-weight: 700; font-size: 1.3rem; letter-spacing: -0.01em; color: var(--text-primary);">Vertech<span style="color: var(--accent-cyan);">TdF</span></span>
+    <img src="logo.png" alt="Vertech TdF" onerror="this.style.display='none'; document.getElementById('fb-text').style.display='block';">
+    <span id="fb-text" class="logo-fallback">Vertech<span style="color: var(--accent-cyan);">TdF</span></span>
   </div>
   <nav>
-    <a href="#problema">Problema</a>
-    <a href="#propuesta">Propuesta</a>
+    <a href="#problema">Desafíos</a>
+    <a href="#modelo">Modelo de Negocio</a>
+    <a href="#infraestructura">Infraestructura y Datos</a>
     <a href="#ckd">Estrategia CKD</a>
-    <a href="#proveedores">Proveedores</a>
     <a href="#financiero">Finanzas</a>
-    <a href="#roadmap">Plan</a>
     <a href="#ecosistema">Ecosistema</a>
   </nav>
 </header>
 
 <section class="hero">
-  <div class="hero-tag" style="display: inline-flex; align-items: center; gap: 0.5rem;">
-    <img src="bandera.png" alt="Bandera TdF" style="height: 14px; width: auto; border-radius: 2px; object-fit: cover;">
-    <span>Soberanía & Alta Tecnología en la Patagonia</span>
-  </div>
-  <h1>Infraestructura <em>AgroTech y Cloud Computing</em> desde el extremo sur</h1>
-  <p class="hero-sub">Impulsando el desarrollo tecnológico de Tierra del Fuego mediante la convergencia de Centros de Datos de última generación y optimización analítica de recursos.</p>
-  
-  <div class="cta-row">
-    <a href="#propuesta" class="btn btn-primary">Ver Propuesta</a>
-    <a href="#roadmap" class="btn btn-ghost">Plan de Operaciones</a>
-  </div>
+  <div class="container">
+    <div class="hero-tag">
+      <img src="bandera.png" alt="Bandera TdF" onerror="this.style.display='none';">
+      <span>Desarrollo Soberano y Alta Tecnología en la Patagonia</span>
+    </div>
+    <h1>Modelo de Negocio Integrado: <em>AgroTech & Cloud Computing</em></h1>
+    <p class="hero-sub">Validación e implementación de infraestructura en la nube de alta eficiencia y automatización de procesos agroindustriales operando bajo el Área Aduanera Especial de Río Grande.</p>
+    
+    <div class="cta-row">
+      <a href="#modelo" class="btn btn-primary">Ver Modelo de Negocio</a>
+      <a href="#infraestructura" class="btn btn-ghost">Infraestructura y Gráficos</a>
+    </div>
 
-  <div class="kpi-grid">
-    <div class="kpi-card">
-      <span class="kpi-val">19.640</span>
-      <span class="kpi-lbl">Soberanía e Incentivos</span>
-    </div>
-    <div class="kpi-card">
-      <span class="kpi-val">-45%</span>
-      <span class="kpi-lbl">Costo de Enfriamiento</span>
-    </div>
-    <div class="kpi-card">
-      <span class="kpi-val">0%</span>
-      <span class="kpi-lbl">Arancel Componentes</span>
-    </div>
-    <div class="kpi-card">
-      <span class="kpi-val">LATAM</span>
-      <span class="kpi-lbl">Alcance Estratégico</span>
+    <div class="kpi-grid">
+      <div class="kpi-card"><span class="kpi-val">Ley 19.640</span><span class="kpi-lbl">Promoción Territorial</span></div>
+      <div class="kpi-card"><span class="kpi-val">-45%</span><span class="kpi-lbl">Eficiencia Térmica</span></div>
+      <div class="kpi-card"><span class="kpi-val">0%</span><span class="kpi-lbl">Arancel Componentes</span></div>
+      <div class="kpi-card"><span class="kpi-val">Río Grande</span><span class="kpi-lbl">Centro Operativo Base</span></div>
     </div>
   </div>
 </section>
 
-<section id="problema" class="problema">
+<section id="problema">
   <div class="container">
-    <span class="section-tag">Análisis Operacional</span>
-    <h2>Desafíos Estructurales Detectados</h2>
-    <p class="section-sub">Limitaciones físicas y logísticas que ralentizan la eficiencia de la matriz productiva regional actual.</p>
+    <span class="section-tag">Oportunidad de Mercado</span>
+    <h2>Variables Críticas del Territorio</h2>
+    <p class="section-sub">Brechas operacionales del ecosistema actual que justifican la viabilidad y despliegue del modelo Vertech TdF.</p>
     
-    <div class="cards-3">
-      <div class="prob-card">
-        <span class="prob-icon">📊</span>
-        <h3>Suboptimización de Recursos</h3>
-        <p>Falta de procesamiento en tiempo real de variables climáticas y de suelo para la toma de decisiones en el sector AgroTech local.</p>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Aislamiento Analítico</h3>
+        <p>Deficiencia en el procesamiento de variables climáticas y edáficas locales para optimizar de forma automatizada los rendimientos agrarios en entornos controlados.</p>
       </div>
-      <div class="prob-card">
-        <span class="prob-icon">⚡</span>
-        <h3>Eficiencia Energética</h3>
-        <p>Altos costos de infraestructura para Data Centers tradicionales que no aprovechan las ventajas térmicas naturales de la zona sur.</p>
+      <div class="card">
+        <h3>Capacidad Cloud Suboptimizada</h3>
+        <p>Inexistencia de centros de datos locales que capitalicen el clima austral para anular costos de refrigeración forzada y ofrecer procesamiento de baja latencia.</p>
       </div>
-      <div class="prob-card">
-        <span class="prob-icon">⛓️</span>
-        <h3>Dependencia de Cadena</h3>
-        <p>Complejidad logística de aprovisionamiento de componentes críticos bajo esquemas de manufactura rígidos.</p>
+      <div class="card">
+        <h3>Logística de Suministro</h3>
+        <p>Necesidad de esquemas de integración de hardware flexibles para esquivar sobrecostos y barreras en las cadenas de valor tradicionales de TI.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="propuesta" class="propuesta">
+<section id="modelo">
   <div class="container">
-    <span class="section-tag">Solución Integrada</span>
-    <h2>Pilares del Modelo de Negocio</h2>
-    <p class="section-sub">Convergencia de servicios en la nube dedicados a la automatización agraria bajo los beneficios del Área Aduanera Especial.</p>
+    <span class="section-tag">Estrategia Comercial</span>
+    <h2>Pilares del Modelo Corporativo</h2>
+    <p class="section-sub">Convergencia de dos verticales operativas de alto rendimiento aprovechando el Régimen de Promoción Industrial.</p>
     
-    <div class="pilares">
-      <div class="pilar">
-        <div class="pilar-icon">🌐</div>
-        <div>
-          <h3>Nube Distribuida de Baja Latencia</h3>
-          <p>Infraestructura escalable optimizada mediante enfriamiento libre natural (Free-Cooling), minimizando el impacto de huella de carbono.</p>
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="color:var(--accent-cyan); margin-bottom:0.5rem;">1. Infraestructura Cloud de Cero Emisiones</h3>
+        <p>Despliegue de nodos distribuidos modulares. El diseño arquitectónico aprovecha directamente las temperaturas medias anuales bajas de Río Grande (Free-Cooling), eliminando la dependencia de chillers de alto consumo energético y garantizando un PUE altamente eficiente.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--accent-blue); margin-bottom:0.5rem;">2. Ecosistema Analítico AgroTech</h3>
+        <p>Procesamiento de datos en la periferia (Edge Computing) aplicado al monitoreo y control automatizado de cultivos hidropónicos y de cobertura. El sistema ejecuta algoritmos predictivos para optimizar iluminación, riego y nutrientes basándose en analítica en tiempo real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="infraestructura">
+  <div class="container">
+    <span class="section-tag">Operaciones de Campo</span>
+    <h2>Infraestructura y Monitoreo Analítico</h2>
+    <p class="section-sub">Integración de captura remota de datos e indicadores de escalabilidad de procesamiento distribuidos.</p>
+    
+    <div class="drone-gallery">
+      <div class="drone-card">
+        <img src="imagen1.png" alt="Drones Vertech en monitoreo agrícola" onerror="this.style.background='var(--bg-surface-hover)';">
+        <div class="drone-info"><strong>Imagen 1:</strong> Flota automatizada de drones realizando mapeo multiespectral de cultivos en zonas australes.</div>
+      </div>
+      <div class="drone-card">
+        <img src="imagen2.png" alt="Análisis térmico de cultivos" onerror="this.style.background='var(--bg-surface-hover)';">
+        <div class="drone-info"><strong>Imagen 2:</strong> Telemetría y transmisión en tiempo real de índices de biomasa hacia el nodo central Cloud.</div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-box">
+        <div class="chart-title">Distribución del Presupuesto Inicial (CAPEX)</div>
+        <div class="donut-chart-box">
+          <div class="donut-chart">
+            <div class="donut-center-text">
+              <span class="main">100%</span>
+              <span class="sub">Asignado</span>
+            </div>
+          </div>
+          <div class="donut-legend">
+            <div class="legend-item">
+              <div class="legend-color" style="background:var(--accent-blue);"></div>
+              <span>45% Equipamiento Nodos</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background:var(--accent-cyan);"></div>
+              <span>30% Infraestructura Civil</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background:var(--accent-amber);"></div>
+              <span>25% I+D e Integración</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="pilar">
-        <div class="pilar-icon">🌱</div>
-        <div>
-          <h3>Analítica Predictiva AgroTech</h3>
-          <p>Algoritmos avanzados aplicados al rendimiento del suelo y control eficiente de cultivos en ambientes controlados en Río Grande.</p>
+      
+      <div class="chart-box">
+        <div class="chart-title">Proyección de Almacenamiento Activo (Petabytes)</div>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <div class="bar-lbl">Año 1</div>
+            <div class="bar-track"><div class="bar-fill" style="width: 25%;"></div></div>
+            <div class="bar-val">1.2 PB</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-lbl">Año 2</div>
+            <div class="bar-track"><div class="bar-fill" style="width: 55%;"></div></div>
+            <div class="bar-val">3.5 PB</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-lbl">Año 3</div>
+            <div class="bar-track"><div class="bar-fill" style="width: 85%;"></div></div>
+            <div class="bar-val">6.8 PB</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-lbl">Año 4</div>
+            <div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div>
+            <div class="bar-val">9.5 PB</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="ckd" class="ckd">
+<section id="ckd">
   <div class="container">
-    <span class="section-tag">Logística de Ensamblado</span>
-    <h2>Estrategia de Integración CKD</h2>
-    <p class="section-sub">Flujo optimizado de estaciones de trabajo y control de calidad interno para el despliegue del equipamiento de red.</p>
+    <span class="section-tag">Logística Industrial</span>
+    <h2>Estrategia de Manufactura e Integración CKD</h2>
+    <p class="section-sub">Esquema secuencial de estaciones de control internas y aseguramiento de la trazabilidad del hardware de red.</p>
     
     <div class="table-wrap">
       <table>
         <thead>
           <tr>
             <th>Estación</th>
-            <th>Proceso Crítico de Control</th>
-            <th>Métrica Clave / Estado</th>
+            <th>Proceso Crítico Interno</th>
+            <th>Métrica de Aceptación</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Estación 4</td>
             <td>Pruebas de Seguridad Eléctrica (Hi-pot)</td>
-            <td>Aprobación Obligatoria</td>
+            <td>Fuga de corriente &lt; 5mA (Parámetro Crítico)</td>
           </tr>
           <tr>
             <td>Estación 7</td>
-            <td>Etiquetado de Producto y Trazabilidad Serial</td>
-            <td>Verificación Automatizada</td>
+            <td>Etiquetado de Unidad y Trazabilidad de Números de Serie</td>
+            <td>Alineación de Registro 100% Digitalizada</td>
           </tr>
           <tr>
             <td>Estación 10</td>
-            <td>Desembalaje de Componentes Críticos y CKD</td>
-            <td>Control de Inventario Inicial</td>
+            <td>Desembalaje de Kits CKD y Verificación de Silicio</td>
+            <td>Control de componentes vs Bill of Materials (BOM)</td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="ckd-note">
-      Nota Operativa: De acuerdo con las regulaciones vigentes de la ARCA, el uso de la etiqueta fiscal física ya no es requerido sobre las unidades procesadas.
+      <strong>Nota de Cumplimiento Normativo:</strong> Conforme a las directrices vigentes emitidas por la ARCA, se ratifica que los equipos procesados quedan exceptuados del uso obligatorio de la etiqueta fiscal física.
     </div>
   </div>
 </section>
 
-<section id="brasil" class="brasil">
+<section id="financiero">
   <div class="container">
-    <div class="brasil-grid">
-      <div>
-        <span class="section-tag">Expansión de Mercado</span>
-        <h2>Alianzas con el Mercado de Brasil</h2>
-        <p class="section-sub">Vinculación estratégica para la exportación de software e intercambio de insumos tecnológicos clave.</p>
-        
-        <div class="stat-row">
-          <div class="stat-box">
-            <span class="val">+35%</span>
-            <span class="lbl">Crecimiento Proyectado</span>
-          </div>
-          <div class="stat-box">
-            <span class="val">B2B</span>
-            <span class="lbl">Foco Comercial</span>
-          </div>
-        </div>
-      </div>
-      
-      <div class="brasil-pts">
-        <div class="brasil-pt">
-          <h4>Integración Regional</h4>
-          <p>Sinergia con hubs tecnológicos de San Pablo para el desarrollo conjunto de sistemas de Big Data aplicados al sector agropecuario.</p>
-        </div>
-        <div class="brasil-pt">
-          <h4>Escalabilidad Macroeconómica</h4>
-          <p>Aprovechamiento de las ventajas arancelarias del Mercosur para reducir costos de transferencia tecnológica.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="proveedores" class="proveedores">
-  <div class="container">
-    <span class="section-tag">Abastecimiento</span>
-    <h2>Estructura de Proveedores Críticos</h2>
-    <p class="section-sub">Matriz de validación y continuidad operacional para el aprovisionamiento continuo.</p>
+    <span class="section-tag">Evaluación Corporativa</span>
+    <h2>Viabilidad Macroeconómica</h2>
+    <p class="section-sub">Indicadores de rentabilidad proyectados para el consolidado operacional bajo los beneficios impositivos de la AAE.</p>
     
-    <div class="sup-grid">
-      <div class="sup-card">
-        <div class="sup-badge badge-green">Nivel Internacional</div>
-        <div class="sup-body">
-          <h3>Componentes de Silicio</h3>
-          <ul>
-            <li>Procesadores de alta eficiencia para IA</li>
-            <li>Módulos de memoria de grado servidor</li>
-            <li>Placas controladoras integradas</li>
-          </ul>
-        </div>
-      </div>
-      <div class="sup-card">
-        <div class="sup-badge badge-teal">Nivel Regional</div>
-        <div class="sup-body">
-          <h3>Infraestructura Civil</h3>
-          <ul>
-            <li>Sistemas de contención térmica</li>
-            <li>Racks mecánicos modulares</li>
-            <li>Sistemas redundantes de energía</li>
-          </ul>
-        </div>
-      </div>
-      <div class="sup-card">
-        <div class="sup-badge badge-amber">Nivel Local</div>
-        <div class="sup-body">
-          <h3>Mantenimiento Técnico</h3>
-          <ul>
-            <li>Soporte de hardware en Río Grande</li>
-            <li>Auditorías periódicas de conectividad</li>
-            <li>Logística inversa y re-trabajos</li>
-          </ul>
-        </div>
-      </div>
+    <div class="grid-3" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="card"><span class="kpi-val" style="color:var(--accent-blue);">24%</span><span class="kpi-lbl">Tasa Interna de Retorno (TIR)</span></div>
+      <div class="card"><span class="kpi-val" style="color:var(--accent-cyan);">2.8M</span><span class="kpi-lbl">Valor Actual Neto (VAN USD)</span></div>
+      <div class="card"><span class="kpi-val" style="color:var(--accent-green);">18 Meses</span><span class="kpi-lbl">Período de Recupero (Payback)</span></div>
+      <div class="card"><span class="kpi-val" style="color:var(--accent-amber);">32.4%</span><span class="kpi-lbl">Margen EBITDA Proyectado</span></div>
     </div>
   </div>
 </section>
 
-<section id="financiero" class="financiero">
+<section id="ecosistema">
   <div class="container">
-    <span class="section-tag">Proyecciones Financieras</span>
-    <h2>Viabilidad y Retorno de Inversión</h2>
-    <p class="section-sub">Indicadores económicos clave proyectados para el consolidado de Vertech TdF.</p>
-    
-    <div class="kpi-row">
-      <div class="fin-kpi blue">
-        <span class="fv">24%</span>
-        <span class="fl">TIR Proyectada</span>
-      </div>
-      <div class="fin-kpi cyan">
-        <span class="fv">2.8M</span>
-        <span class="fl">VAN (USD)</span>
-      </div>
-      <div class="fin-kpi green">
-        <span class="fv">18 Meses</span>
-        <span class="fl">Payback Operativo</span>
-      </div>
-      <div class="fin-kpi amber">
-        <span class="fv">A+</span>
-        <span class="fl">Calificación de Riesgo</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="roadmap" class="roadmap">
-  <div class="container">
-    <span class="section-tag">Cronograma</span>
-    <h2>Fases del Roadmap Estratégico</h2>
-    <p class="section-sub">Plan de acción de ingeniería y despliegue del modelo integrado de negocio.</p>
-    
-    <div class="phases">
-      <div class="phase">
-        <div class="phase-head">Fase 1: Configuración</div>
-        <div class="phase-body">
-          <h4>Diseño Arquitectónico</h4>
-          <ul>
-            <li>Modelado de Cloud Computing</li>
-            <li>Cálculo de eficiencia térmica</li>
-          </ul>
-          <span class="phase-budget">H1 2026</span>
-        </div>
-      </div>
-      <div class="phase">
-        <div class="phase-head">Fase 2: Integración</div>
-        <div class="phase-body">
-          <h4>Despliegue CKD</h4>
-          <ul>
-            <li>Validación en Estaciones</li>
-            <li>Montaje de servidores de prueba</li>
-          </ul>
-          <span class="phase-budget">H2 2026</span>
-        </div>
-      </div>
-      <div class="phase">
-        <div class="phase-head">Fase 3: Piloto</div>
-        <div class="phase-body">
-          <h4>Pruebas AgroTech</h4>
-          <ul>
-            <li>Conexión de sensores de campo</li>
-            <li>Ingesta de datos en tiempo real</li>
-          </ul>
-          <span class="phase-budget">H1 2027</span>
-        </div>
-      </div>
-      <div class="phase">
-        <div class="phase-head">Fase 4: Escala</div>
-        <div class="phase-body">
-          <h4>Comercialización</h4>
-          <ul>
-            <li>Exportación a Brasil</li>
-            <li>Apertura de nuevos Data Centers</li>
-          </ul>
-          <span class="phase-budget">H2 2027</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="ecosistema" class="ecosistema">
-  <div class="container">
-    <span class="section-tag">Entorno Regional</span>
+    <span class="section-tag">Sinergia Territorial</span>
     <h2>Ecosistema de Cooperación Productiva</h2>
-    <p class="section-sub">La articulación estratégica como factor clave para garantizar la sustentabilidad a largo plazo.</p>
+    <p class="section-sub">Articulación con las capacidades industriales existentes de la provincia para asegurar continuidad de negocio.</p>
     
-    <div class="mirgor-box">
-      <h3>Sinergia de Manufactura Avanzada</h3>
-      <p>Alineación operativa con estándares industriales líderes de Tierra del Fuego para optimizar los procesos de aprovisionamiento de semiconductores, transferencia de capacidades mecánicas y flujos de ensamblado bajo estrictas normativas de control.</p>
+    <div class="card" style="background: rgba(59, 130, 246, 0.02); border-color: rgba(59,130,246,0.15); margin-bottom: 1.5rem;">
+      <h3 style="margin-bottom: 0.5rem;">Sinergia y Transferencia de Conocimiento Tecnológico</h3>
+      <p>Alineación estratégica con los estándares de la industria manufacturera electrónica de Tierra del Fuego. Esta integración directa habilita la adopción rápida de flujos logísticos optimizados, metodologías Just-In-Time y rutinas estrictas de control de fallas a escala global.</p>
     </div>
     
-    <div class="helice-grid">
-      <div class="helice-card">
-        <span class="helice-icon">🏛️</span>
+    <div class="grid-3">
+      <div class="card">
         <h3>Sector Público</h3>
-        <p class="sub">Municipio y Promoción Promocional</p>
         <ul>
-          <li>Marco regulatorio Ley 19.640</li>
-          <li>Fomento del arraigo y soberanía</li>
+          <li>Ley 19.640 como eje de soberanía territorial</li>
+          <li>Incentivo directo al arraigo poblacional</li>
         </ul>
       </div>
-      <div class="helice-card">
-        <span class="helice-icon">🎓</span>
+      <div class="card">
         <h3>Sector Académico</h3>
-        <p class="sub">Universidades Tecnológicas</p>
         <ul>
-          <li>Desarrollo de proyectos de tesis</li>
-          <li>Capacitación en Cloud e IA</li>
+          <li>Formación local de talento especializado en IA</li>
+          <li>Validación empírica de marcos metodológicos</li>
         </ul>
       </div>
-      <div class="helice-card">
-        <span class="helice-icon">🏭</span>
+      <div class="card">
         <h3>Sector Privado</h3>
-        <p class="sub">Empresas e Integradores</p>
         <ul>
-          <li>Servicios logísticos integrados</li>
-          <li>Consumo de analítica aplicada</li>
+          <li>Integración de redes logísticas regionales</li>
+          <li>Clientes corporativos B2B de analítica avanzada</li>
         </ul>
       </div>
     </div>
@@ -928,42 +404,31 @@ footer a:hover { color: var(--text-primary); }
 
 <section class="cta-section">
   <div class="container">
-    <h2>¿Listo para impulsar el Extremo Sur?</h2>
-    <p>Conectá con nuestro equipo de desarrollo para conocer detalles técnicos de la arquitectura Cloud o coordinar alianzas comerciales de software.</p>
-    <a href="mailto:info@vertechtdf.com" class="btn btn-primary">Contactar Ingeniería</a>
+    <h2>Canales de Vinculación y Negocios</h2>
+    <p class="section-sub" style="margin: 0 auto 2rem; text-align: center;">Seleccioná el canal correspondiente según la naturaleza de la consulta corporativa o comercial.</p>
     
-    <div class="contact-info">
-      <span>Río Grande, Tierra del Fuego, Argentina</span>
-      <a href="https://www.vertechtdf.com" target="_blank">www.vertechtdf.com</a>
+    <div class="cta-box-row">
+      <div class="cta-box">
+        <h3 style="color: var(--accent-cyan);">Estrategia e Inversión</h3>
+        <p>Contacto directo para alianzas comerciales de gran escala, expansión del modelo, rondas de inversión corporativas o vinculación institucional.</p>
+        <a href="mailto:fundador@vertechtdf.com" class="btn btn-primary" style="background: var(--accent-cyan); color: #000;">Contactar Fundador</a>
+      </div>
+      
+      <div class="cta-box">
+        <h3 style="color: var(--accent-blue);">Desarrollo e Ingeniería</h3>
+        <p>Consultas técnicas dedicadas a la arquitectura de centros de datos modulares, optimización analítica o especificaciones del flujo CKD.</p>
+        <a href="mailto:ingenieria@vertechtdf.com" class="btn btn-ghost">Contactar Ingeniería</a>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div>&copy; 2026 Vertech TdF. Todos los derechos reservados. Diseñado bajo el marco de la Ley 19.640.</div>
-  <div><a href="#">Términos de Servicio</a> | <a href="#">Políticas de Privacidad</a></div>
+  <div>&copy; 2026 Vertech TdF. Desarrollado bajo el marco de la Ley 19.640 | Río Grande, Tierra del Fuego, Argentina.</div>
+  <div style="color: var(--text-muted); font-size: 0.72rem; max-width: 450px; text-align: right;">
+    Este desarrollo de modelo de negocio integrado constituye la defensa y formulación de la Tesina de Grado para la carrera de Licenciatura en Administración de Empresas (LAE).
+  </div>
 </footer>
-
-<script>
-  // Control sutil para el efecto de revelado al hacer scroll
-  document.addEventListener("DOMContentLoaded", function() {
-    const reveals = document.querySelectorAll(".reveal, .prob-card, .pilar, .sup-card, .phase, .helice-card");
-    
-    function checkReveal() {
-      const triggerBottom = window.innerHeight * 0.9;
-      reveals.forEach(el => {
-        el.classList.add("reveal"); // Asegura la clase base
-        const boxTop = el.getBoundingClientRect().top;
-        if (boxTop < triggerBottom) {
-          el.classList.add("visible");
-        }
-      });
-    }
-    
-    window.addEventListener("scroll", checkReveal);
-    checkReveal(); // Ejecución inicial
-  });
-</script>
 
 </body>
 </html>
