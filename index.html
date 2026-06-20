@@ -86,13 +86,19 @@ nav a:hover { color: var(--text-primary); background: rgba(255,255,255,0.05); }
 .hero-content { position: relative; z-index: 2; max-width: 1000px; }
 
 .hero-badge {
-  display: inline-flex; align-items: center; gap: 0.75rem;
-  background: rgba(0,245,212,0.08); border: 1px solid rgba(0,245,212,0.25);
-  padding: 0.55rem 1.25rem; border-radius: 40px;
-  font-size: 0.82rem; font-weight: 600; color: var(--accent-cyan);
-  margin-bottom: 2rem; letter-spacing: 0.03em;
+  display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+  margin-bottom: 2rem;
 }
-.hero-badge img { height: 28px; border-radius: 3px; }
+.hero-badge img {
+  height: 90px; width: auto; border-radius: 6px;
+  filter: drop-shadow(0 0 18px rgba(0,245,212,0.25));
+}
+.hero-badge span {
+  background: rgba(0,245,212,0.08); border: 1px solid rgba(0,245,212,0.25);
+  padding: 0.45rem 1.2rem; border-radius: 40px;
+  font-size: 0.82rem; font-weight: 600; color: var(--accent-cyan);
+  letter-spacing: 0.03em; text-align: center;
+}
 
 h1 {
   font-size: clamp(2.8rem, 6vw, 5rem);
@@ -310,8 +316,17 @@ footer a { color: var(--text-secondary); text-decoration: none; }
 /* quitar hero video wrap si quedó algún estilo */
 .hero { background: radial-gradient(ellipse at 50% 30%, rgba(59,130,246,0.12), transparent 65%), var(--bg-main); }
 
+
+/* DRONE GALLERY */
+.drone-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.75rem; }
+.drone-card { background: var(--bg-surface); border: var(--border-glow); border-radius: var(--radius); overflow: hidden; transition: var(--transition); }
+.drone-card:hover { border-color: rgba(0,245,212,0.15); transform: translateY(-3px); }
+.drone-info { padding: 0.9rem 1.1rem; font-size: 0.83rem; color: var(--text-secondary); border-top: var(--border-glow); }
+.drone-info strong { color: var(--text-primary); }
+
 @media(max-width: 960px) {
-  .hero-kpis, .grid-3, .grid-4, .grid-2, .capas-wrap, .retorno-grid, .chart-container, .cta-box-row { grid-template-columns: 1fr; }
+  .hero-kpis, .grid-3, .grid-4, .grid-2, .capas-wrap, .retorno-grid, .chart-container, .cta-box-row, .drone-gallery { grid-template-columns: 1fr; }
+  [style*="repeat(4,1fr)"] { grid-template-columns: 1fr 1fr !important; }
   nav a:not(.nav-cta) { display: none; }
   h1 { font-size: 2.4rem; }
   .hero-video-wrap iframe { display: none; }
@@ -520,32 +535,154 @@ footer a { color: var(--text-secondary); text-decoration: none; }
 </section>
 
 <!-- INFRAESTRUCTURA -->
+<!-- INFRAESTRUCTURA + MÉTRICAS -->
 <section id="infraestructura">
   <div class="container">
-    <span class="section-tag">Infraestructura</span>
-    <h2>Operaciones de campo</h2>
-    <p class="section-sub">Captura multiespectral, telemetría en tiempo real y procesamiento edge desde Río Grande hacia toda la región.</p>
-    <div class="grid-2">
-      <div class="card" style="border-color:rgba(0,245,212,0.1)">
-        <img src="imagen1.png" alt="Drones en campo" style="width:100%;height:200px;object-fit:cover;border-radius:6px;margin-bottom:1rem;" onerror="this.style.display='none'">
-        <h3>Mapeo Multiespectral</h3>
-        <p>Flota de drones realizando relevamiento NDVI sobre cultivos en zonas australes. Datos procesados en nodo local.</p>
+    <span class="section-tag">Validación Técnica y Productiva</span>
+    <h2>Escala Industrial y Monetización de Datos</h2>
+    <p class="section-sub">Estructura operativa para la fabricación de hardware y la arquitectura de servicios Cloud de alto valor.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-bottom:1.75rem;">
+
+      <div class="drone-card">
+        <img src="imagen1.png" alt="Drones en campo"
+          style="width:100%;height:180px;object-fit:cover;display:block;"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div style="display:none;width:100%;height:180px;background:linear-gradient(135deg,#1a2a1a,#0a1a2a);align-items:center;justify-content:center;font-size:2.5rem;opacity:0.3;">🚁</div>
+        <div class="drone-info"><strong>Monitoreo de Campo:</strong> Mapeo multiespectral NDVI sobre cultivos australes.</div>
       </div>
-      <div class="card" style="border-color:rgba(59,130,246,0.1)">
-        <img src="imagen2.png" alt="Telemetría" style="width:100%;height:200px;object-fit:cover;border-radius:6px;margin-bottom:1rem;" onerror="this.style.display='none'">
-        <h3>Telemetría en Tiempo Real</h3>
-        <p>Transmisión de índices de biomasa hacia el nodo central Cloud con latencia mínima gracias a infraestructura local.</p>
+
+      <div class="drone-card">
+        <img src="servidores.png" alt="Data Center"
+          style="width:100%;height:180px;object-fit:cover;display:block;"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div style="display:none;width:100%;height:180px;background:linear-gradient(135deg,#0a1020,#101a30);align-items:center;justify-content:center;font-size:2.5rem;opacity:0.3;">🖥️</div>
+        <div class="drone-info"><strong>Data Center Soberano:</strong> Nodos de procesamiento con free-cooling en Río Grande.</div>
+      </div>
+
+      <div class="drone-card">
+        <img src="imagen2.png" alt="Telemetría"
+          style="width:100%;height:180px;object-fit:cover;display:block;"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div style="display:none;width:100%;height:180px;background:linear-gradient(135deg,#0a1a2a,#1a0a2a);align-items:center;justify-content:center;font-size:2.5rem;opacity:0.3;">📡</div>
+        <div class="drone-info"><strong>Data Monetization:</strong> Telemetría en tiempo real al nodo central Cloud.</div>
+      </div>
+
+      <div class="drone-card">
+        <img src="app.png" alt="App drones"
+          style="width:100%;height:180px;object-fit:cover;display:block;"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div style="display:none;width:100%;height:180px;background:linear-gradient(135deg,#1a0a2a,#0a1a1a);align-items:center;justify-content:center;font-size:2.5rem;opacity:0.3;">📱</div>
+        <div class="drone-info"><strong>Plataforma SaaS:</strong> App de gestión agronómica con analítica predictiva integrada.</div>
+      </div>
+
+    </div>
+
+    <div class="chart-container" style="margin-top:1.5rem;">
+      <div class="chart-box">
+        <div class="chart-title">Métricas de Fabricación y Software (Hardware + App)</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div style="background:rgba(255,255,255,0.02);padding:1.25rem;border-radius:6px;">
+            <span style="font-size:1.7rem;font-weight:800;color:var(--accent-cyan);display:block;letter-spacing:-0.02em;">60</span>
+            <span style="font-size:0.75rem;color:var(--text-secondary);line-height:1.4;">Unidades producidas por mes</span>
+          </div>
+          <div style="background:rgba(255,255,255,0.02);padding:1.25rem;border-radius:6px;">
+            <span style="font-size:1.7rem;font-weight:800;color:var(--accent-blue);display:block;letter-spacing:-0.02em;">+2.500</span>
+            <span style="font-size:0.75rem;color:var(--text-secondary);line-height:1.4;">Usuarios activos App (proyección)</span>
+          </div>
+        </div>
+      </div>
+      <div class="chart-box">
+        <div class="chart-title">Indicadores de Monetización de Datos</div>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <div class="bar-lbl" style="width:110px;">Data Premium</div>
+            <div class="bar-track"><div class="bar-fill" style="width:85%;background:var(--accent-amber);"></div></div>
+            <div class="bar-val" style="color:var(--accent-amber);">85% Revenue</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-lbl" style="width:110px;">Almacenamiento</div>
+            <div class="bar-track"><div class="bar-fill" style="width:25%;"></div></div>
+            <div class="bar-val" style="color:var(--accent-cyan);">2.1 PB</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CKD -->
-<section id="ckd">
+<!-- DIAGRAMA DE FLUJO CKD -->
+<section id="ckd" style="background:var(--bg-surface);">
   <div class="container">
-    <span class="section-tag">Logística Industrial</span>
-    <h2>Manufactura CKD bajo Ley 19.640</h2>
-    <p class="section-sub">Ensamblado local de hardware con 0% de arancel en componentes importados. Trazabilidad completa de producción.</p>
+    <span class="section-tag">Proceso Industrial</span>
+    <h2>Manufactura CKD: Fabricación y Control de Calidad</h2>
+    <p class="section-sub">Flujo secuencial de ensamblado, testeo y validación bajo Ley 19.640. 0% arancel en componentes importados.</p>
+
+    <div style="display:flex;align-items:flex-start;gap:0;overflow-x:auto;padding:1.5rem;background:rgba(0,0,0,0.2);border:1px dashed rgba(255,255,255,0.1);border-radius:var(--radius);margin-bottom:1.5rem;">
+      <div style="display:flex;align-items:flex-start;gap:0;min-width:max-content;">
+
+        <div style="display:flex;flex-direction:column;align-items:center;width:130px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(0,245,212,0.1);border:2px solid var(--accent-cyan);color:var(--accent-cyan);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:800;margin-bottom:0.6rem;">01</div>
+          <div style="font-size:0.75rem;color:var(--text-primary);text-align:center;font-weight:600;margin-bottom:0.2rem;">Recepción CKD</div>
+          <div style="font-size:0.68rem;color:var(--text-muted);text-align:center;">Verificación vs BOM</div>
+        </div>
+        <div style="color:var(--accent-cyan);font-size:1.2rem;padding:0 0.25rem;margin-top:10px;opacity:0.4;">→</div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;width:130px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(59,130,246,0.1);border:2px solid var(--accent-blue);color:var(--accent-blue);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:800;margin-bottom:0.6rem;">02</div>
+          <div style="font-size:0.75rem;color:var(--text-primary);text-align:center;font-weight:600;margin-bottom:0.2rem;">Desembalaje y clasificación</div>
+          <div style="font-size:0.68rem;color:var(--text-muted);text-align:center;">Est. 10</div>
+        </div>
+        <div style="color:var(--accent-cyan);font-size:1.2rem;padding:0 0.25rem;margin-top:10px;opacity:0.4;">→</div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;width:130px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(245,158,11,0.1);border:2px solid var(--accent-amber);color:var(--accent-amber);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:800;margin-bottom:0.6rem;">03</div>
+          <div style="font-size:0.75rem;color:var(--text-primary);text-align:center;font-weight:600;margin-bottom:0.2rem;">Ensamblado de componentes</div>
+          <div style="font-size:0.68rem;color:var(--text-muted);text-align:center;">Línea de producción</div>
+        </div>
+        <div style="color:var(--accent-cyan);font-size:1.2rem;padding:0 0.25rem;margin-top:10px;opacity:0.4;">→</div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;width:130px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(0,245,212,0.1);border:2px solid var(--accent-cyan);color:var(--accent-cyan);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:800;margin-bottom:0.6rem;">04</div>
+          <div style="font-size:0.75rem;color:var(--text-primary);text-align:center;font-weight:600;margin-bottom:0.2rem;">Prueba Hi-pot</div>
+          <div style="font-size:0.68rem;color:var(--text-muted);text-align:center;">Fuga &lt; 5mA — Est. 4</div>
+        </div>
+        <div style="color:var(--accent-cyan);font-size:1.2rem;padding:0 0.25rem;margin-top:10px;opacity:0.4;">→</div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;width:130px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(16,185,129,0.1);border:2px solid #10B981;color:#10B981;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:800;margin-bottom:0.6rem;">05</div>
+          <div style="font-size:0.75rem;color:var(--text-primary);text-align:center;font-weight:600;margin-bottom:0.2rem;">Etiquetado y trazabilidad</div>
+          <div style="font-size:0.68rem;color:var(--text-muted);text-align:center;">100% digital — Est. 7</div>
+        </div>
+        <div style="color:var(--accent-cyan);font-size:1.2rem;padding:0 0.25rem;margin-top:10px;opacity:0.4;">→</div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;width:130px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(139,92,246,0.1);border:2px solid #8B5CF6;color:#8B5CF6;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:800;margin-bottom:0.6rem;">06</div>
+          <div style="font-size:0.75rem;color:var(--text-primary);text-align:center;font-weight:600;margin-bottom:0.2rem;">Despacho y logística</div>
+          <div style="font-size:0.68rem;color:var(--text-muted);text-align:center;">Cumplimiento ARCA</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+      <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.72rem;color:var(--text-muted);">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--accent-cyan);"></div>Ingreso / Verificación
+      </div>
+      <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.72rem;color:var(--text-muted);">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--accent-blue);"></div>Clasificación
+      </div>
+      <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.72rem;color:var(--text-muted);">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--accent-amber);"></div>Producción
+      </div>
+      <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.72rem;color:var(--text-muted);">
+        <div style="width:8px;height:8px;border-radius:50%;background:#10B981;"></div>Control de calidad
+      </div>
+      <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.72rem;color:var(--text-muted);">
+        <div style="width:8px;height:8px;border-radius:50%;background:#8B5CF6;"></div>Despacho
+      </div>
+    </div>
+
     <div class="table-wrap">
       <table>
         <thead>
