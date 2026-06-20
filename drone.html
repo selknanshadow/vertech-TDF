@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dron Volando - Animación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            background: linear-gradient(to bottom, #87CEEB 0%, #B0E0E6 50%, #90EE90 50%, #228B22 100%);
+            height: 100vh;
+            width: 100vw;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .scene {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Cielo con nubes */
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+            opacity: 0.9;
+        }
+
+        .cloud::before,
+        .cloud::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+        }
+
+        .cloud1 {
+            width: 120px;
+            height: 40px;
+            top: 15%;
+            animation: float 25s linear infinite;
+        }
+
+        .cloud1::before {
+            width: 60px;
+            height: 60px;
+            top: -30px;
+            left: 15px;
+        }
+
+        .cloud1::after {
+            width: 80px;
+            height: 50px;
+            top: -20px;
+            right: 10px;
+        }
+
+        .cloud2 {
+            width: 100px;
+            height: 35px;
+            top: 25%;
+            animation: float 30s linear infinite;
+            animation-delay: -10s;
+        }
+
+        .cloud2::before {
+            width: 50px;
+            height: 50px;
+            top: -25px;
+            left: 20px;
+        }
+
+        .cloud2::after {
+            width: 70px;
+            height: 40px;
+            top: -15px;
+            right: 15px;
+        }
+
+        .cloud3 {
+            width: 140px;
+            height: 45px;
+            top: 10%;
+            animation: float 35s linear infinite;
+            animation-delay: -5s;
+        }
+
+        .cloud3::before {
+            width: 70px;
+            height: 70px;
+            top: -35px;
+            left: 25px;
+        }
+
+        .cloud3::after {
+            width: 90px;
+            height: 55px;
+            top: -25px;
+            right: 20px;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-200px); }
+            100% { transform: translateX(calc(100vw + 200px)); }
+        }
+
+        /* Sol */
+        .sun {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #FFD700, #FFA500);
+            border-radius: 50%;
+            top: 8%;
+            right: 10%;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Montañas en el fondo */
+        .mountains {
+            position: absolute;
+            bottom: 50%;
+            width: 100%;
+            height: 150px;
+        }
+
+        .mountain {
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 120px solid #6B8E6B;
+        }
+
+        .mountain:nth-child(1) { left: 5%; border-bottom-color: #5F7A5F; border-left-width: 120px; border-right-width: 120px; border-bottom-width: 150px; }
+        .mountain:nth-child(2) { left: 20%; border-bottom-color: #6B8E6B; border-left-width: 100px; border-right-width: 100px; border-bottom-width: 120px; }
+        .mountain:nth-child(3) { left: 50%; border-bottom-color: #5F7A5F; border-left-width: 140px; border-right-width: 140px; border-bottom-width: 160px; }
+        .mountain:nth-child(4) { left: 75%; border-bottom-color: #6B8E6B; border-left-width: 110px; border-right-width: 110px; border-bottom-width: 130px; }
+
+        /* Campo con detalles */
+        .field {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to bottom, #90EE90, #228B22);
+        }
+
+        .field::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 50px,
+                rgba(34, 139, 34, 0.1) 50px,
+                rgba(34, 139, 34, 0.1) 52px
+            );
+        }
+
+        /* Surcos del campo */
+        .furrow {
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: rgba(0, 100, 0, 0.15);
+        }
+
+        .furrow:nth-child(1) { top: 20%; }
+        .furrow:nth-child(2) { top: 40%; }
+        .furrow:nth-child(3) { top: 60%; }
+        .furrow:nth-child(4) { top: 80%; }
+
+        /* Flores en el campo */
+        .flower {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: sway 3s ease-in-out infinite;
+        }
+
+        .flower::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 15px;
+            background: #228B22;
+            bottom: -15px;
+            left: 3px;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .flower1 { background: #FF6B6B; bottom: 15%; left: 10%; animation-delay: 0s; }
+        .flower2 { background: #FFD93D; bottom: 20%; left: 25%; animation-delay: 0.5s; }
+        .flower3 { background: #FF6B9D; bottom: 12%; left: 40%; animation-delay: 1s; }
+        .flower4 { background: #C084FC; bottom: 18%; left: 60%; animation-delay: 1.5s; }
+        .flower5 { background: #FF8C42; bottom: 10%; left: 75%; animation-delay: 2s; }
+        .flower6 { background: #6BCB77; bottom: 22%; left: 85%; animation-delay: 0.3s; }
+
+        /* Árboles */
+        .tree {
+            position: absolute;
+            bottom: 45%;
+        }
+
+        .tree-trunk {
+            width: 12px;
+            height: 30px;
+            background: #8B4513;
+            margin: 0 auto;
+        }
+
+        .tree-top {
+            width: 50px;
+            height: 50px;
+            background: #228B22;
+            border-radius: 50%;
+            margin-top: -10px;
+            position: relative;
+        }
+
+        .tree-top::before {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            background: #2E8B57;
+            border-radius: 50%;
+            top: -15px;
+            left: 7px;
+        }
+
+        .tree1 { left: 8%; transform: scale(0.8); }
+        .tree2 { left: 30%; transform: scale(1.2); }
+        .tree3 { left: 65%; transform: scale(0.9); }
+        .tree4 { left: 88%; transform: scale(1.1); }
+
+        /* DRON */
+        .drone-container {
+            position: absolute;
+            width: 120px;
+            height: 80px;
+            animation: fly 15s linear infinite;
+            z-index: 100;
+        }
+
+        @keyframes fly {
+            0% {
+                left: -150px;
+                top: 20%;
+                transform: scale(0.8);
+            }
+            20% {
+                left: 20%;
+                top: 15%;
+                transform: scale(1);
+            }
+            40% {
+                left: 40%;
+                top: 25%;
+                transform: scale(0.9);
+            }
+            60% {
+                left: 60%;
+                top: 18%;
+                transform: scale(1);
+            }
+            80% {
+                left: 80%;
+                top: 22%;
+                transform: scale(0.85);
+            }
+            100% {
+                left: calc(100% + 150px);
+                top: 15%;
+                transform: scale(0.8);
+            }
+        }
+
+        /* Cuerpo del dron */
+        .drone-body {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            background: linear-gradient(135deg, #333, #555);
+            border-radius: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .drone-body::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 8px;
+            background: #1a1a1a;
+            border-radius: 3px;
+            top: 3px;
+            left: 12px;
+        }
+
+        .drone-body::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #FF0000;
+            border-radius: 50%;
+            top: 5px;
+            right: 5px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Brazos del dron */
+        .drone-arm {
+            position: absolute;
+            width: 50px;
+            height: 4px;
+            background: #444;
+            top: 50%;
+            left: 50%;
+            transform-origin: center;
+        }
+
+        .drone-arm:nth-child(1) {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        .drone-arm:nth-child(2) {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+
+        /* Motores/Helices */
+        .motor {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #666;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .motor-left { left: -10px; }
+        .motor-right { right: -10px; }
+
+        .propeller {
+            position: absolute;
+            width: 50px;
+            height: 4px;
+            background: rgba(200, 200, 200, 0.6);
+            border-radius: 2px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: spin 0.1s linear infinite;
+        }
+
+        .propeller::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 50px;
+            background: rgba(200, 200, 200, 0.6);
+            border-radius: 2px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Posiciones de los motores */
+        .motor-pos-1 { top: 50%; left: -25px; }
+        .motor-pos-2 { top: 50%; right: -25px; }
+        .motor-pos-3 { top: -25px; left: 50%; transform: translateX(-50%); }
+        .motor-pos-4 { bottom: -25px; left: 50%; transform: translateX(-50%); }
+
+        /* Sombra del dron en el campo */
+        .drone-shadow {
+            position: absolute;
+            width: 40px;
+            height: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            bottom: 48%;
+            animation: shadowMove 15s linear infinite;
+            filter: blur(3px);
+            z-index: 5;
+        }
+
+        @keyframes shadowMove {
+            0% { left: -150px; opacity: 0; }
+            10% { left: 10%; opacity: 0.3; }
+            20% { left: 20%; opacity: 0.4; }
+            40% { left: 40%; opacity: 0.3; }
+            60% { left: 60%; opacity: 0.4; }
+            80% { left: 80%; opacity: 0.3; }
+            90% { left: 90%; opacity: 0.2; }
+            100% { left: calc(100% + 150px); opacity: 0; }
+        }
+
+        /* Efecto de viento/partículas */
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: particleFloat 3s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateX(0) translateY(0); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateX(100px) translateY(-50px); opacity: 0; }
+        }
+
+        /* Panel de información */
+        .info-panel {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            z-index: 200;
+            backdrop-filter: blur(5px);
+        }
+
+        .info-panel h3 {
+            color: #00FF00;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .info-line {
+            margin: 4px 0;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .info-label { color: #888; }
+        .info-value { color: #00FF00; }
+
+        .battery-bar {
+            width: 60px;
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        .battery-fill {
+            width: 75%;
+            height: 100%;
+            background: #00FF00;
+            border-radius: 4px;
+            animation: batteryPulse 2s infinite;
+        }
+
+        @keyframes batteryPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .drone-container {
+                transform: scale(0.7);
+            }
+            .info-panel {
+                font-size: 10px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <!-- Panel de información tipo HUD -->
+        <div class="info-panel">
+            <h3>🚁 DRONE-01</h3>
+            <div class="info-line">
+                <span class="info-label">ALTITUD:</span>
+                <span class="info-value" id="altitude">120m</span>
+            </div>
+            <div class="info-line">
+                <span class="info-label">VELOCIDAD:</span>
+                <span class="info-value" id="speed">45 km/h</span>
+            </div>
+            <div class="info-line">
+                <span class="info-label">BATERÍA:</span>
+                <span class="info-value">75%<span class="battery-bar"><span class="battery-fill"></span></span></span>
+            </div>
+            <div class="info-line">
+                <span class="info-label">GPS:</span>
+                <span class="info-value">ACTIVO</span>
+            </div>
+            <div class="info-line">
+                <span class="info-label">SEÑAL:</span>
+                <span class="info-value">●●●●○</span>
+            </div>
+        </div>
+
+        <!-- Sol -->
+        <div class="sun"></div>
+
+        <!-- Nubes -->
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+
+        <!-- Montañas -->
+        <div class="mountains">
+            <div class="mountain"></div>
+            <div class="mountain"></div>
+            <div class="mountain"></div>
+            <div class="mountain"></div>
+        </div>
+
+        <!-- Árboles -->
+        <div class="tree tree1">
+            <div class="tree-top"></div>
+            <div class="tree-trunk"></div>
+        </div>
+        <div class="tree tree2">
+            <div class="tree-top"></div>
+            <div class="tree-trunk"></div>
+        </div>
+        <div class="tree tree3">
+            <div class="tree-top"></div>
+            <div class="tree-trunk"></div>
+        </div>
+        <div class="tree tree4">
+            <div class="tree-top"></div>
+            <div class="tree-trunk"></div>
+        </div>
+
+        <!-- Campo -->
+        <div class="field">
+            <div class="furrow"></div>
+            <div class="furrow"></div>
+            <div class="furrow"></div>
+            <div class="furrow"></div>
+            
+            <!-- Flores -->
+            <div class="flower flower1"></div>
+            <div class="flower flower2"></div>
+            <div class="flower flower3"></div>
+            <div class="flower flower4"></div>
+            <div class="flower flower5"></div>
+            <div class="flower flower6"></div>
+        </div>
+
+        <!-- Sombra del dron -->
+        <div class="drone-shadow"></div>
+
+        <!-- Dron -->
+        <div class="drone-container">
+            <!-- Brazos -->
+            <div class="drone-arm"></div>
+            <div class="drone-arm"></div>
+            
+            <!-- Cuerpo -->
+            <div class="drone-body"></div>
+            
+            <!-- Motores con hélices -->
+            <div class="motor motor-pos-1">
+                <div class="propeller"></div>
+            </div>
+            <div class="motor motor-pos-2">
+                <div class="propeller"></div>
+            </div>
+            <div class="motor motor-pos-3">
+                <div class="propeller"></div>
+            </div>
+            <div class="motor motor-pos-4">
+                <div class="propeller"></div>
+            </div>
+        </div>
+
+        <!-- Partículas de viento -->
+        <div class="particle" style="top: 30%; left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="top: 40%; left: 30%; animation-delay: 1s;"></div>
+        <div class="particle" style="top: 35%; left: 60%; animation-delay: 2s;"></div>
+        <div class="particle" style="top: 45%; left: 80%; animation-delay: 0.5s;"></div>
+    </div>
+
+    <script>
+        // Actualizar datos del HUD en tiempo real
+        function updateHUD() {
+            const altitude = document.getElementById('altitude');
+            const speed = document.getElementById('speed');
+            
+            // Simular cambios sutiles
+            const baseAlt = 120;
+            const baseSpeed = 45;
+            
+            setInterval(() => {
+                const altVariation = (Math.random() - 0.5) * 4;
+                const speedVariation = (Math.random() - 0.5) * 6;
+                
+                altitude.textContent = (baseAlt + altVariation).toFixed(1) + 'm';
+                speed.textContent = (baseSpeed + speedVariation).toFixed(1) + ' km/h';
+            }, 1000);
+        }
+
+        updateHUD();
+
+        // Crear partículas adicionales dinámicamente
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.top = Math.random() * 50 + 20 + '%';
+            particle.style.left = '-10px';
+            particle.style.animationDuration = (2 + Math.random() * 2) + 's';
+            particle.style.animationDelay = '0s';
+            
+            document.querySelector('.scene').appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 4000);
+        }
+
+        setInterval(createParticle, 1500);
+    </script>
+</body>
+</html>
